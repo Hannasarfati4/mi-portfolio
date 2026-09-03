@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hanna Sarfati — Marketing Digital</title>
+<title>Hanna Sarfati — Digital Marketing</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -25,12 +25,9 @@
     font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px;
     color: #888; margin-bottom: 16px; font-weight: 600;
   }
-  p { font-size: 16px; color: #333; margin-bottom: 12px; }
+  p { margin-bottom: 12px; }
   .services-list { list-style: none; }
-  .services-list li {
-    padding: 14px 0; border-bottom: 1px solid #e5e5e5;
-    font-size: 16px;
-  }
+  .services-list li { padding: 14px 0; border-bottom: 1px solid #e5e5e5; }
   .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
   .skill-tags span {
     font-size: 13px; background: #eee; color: #444;
@@ -38,15 +35,36 @@
   }
   .case-study {
     border: 1px solid #e5e5e5; border-radius: 8px;
-    padding: 24px; margin-bottom: 16px; background: white;
+    padding: 28px; margin-bottom: 16px; background: white;
   }
-  .case-study h3 { font-size: 18px; margin-bottom: 8px; }
+  .case-study h3 { font-size: 20px; margin-bottom: 4px; }
+  .case-study .subtitle { font-size: 14px; color: #666; margin-bottom: 20px; }
   .case-study .tag {
     display: inline-block; font-size: 12px; color: #666;
     background: #f0f0f0; padding: 3px 10px; border-radius: 12px;
     margin-bottom: 10px;
   }
   .case-study.pending { opacity: 0.55; }
+  .stats-row { display: flex; gap: 24px; margin: 20px 0; flex-wrap: wrap; }
+  .stat { flex: 1; min-width: 140px; }
+  .stat .num { font-size: 24px; font-weight: 600; }
+  .stat .label { font-size: 13px; color: #666; }
+  .role-note {
+    background: #f7f7f7; border-left: 3px solid #ccc;
+    padding: 14px 16px; font-size: 14px; color: #444;
+    margin: 20px 0;
+  }
+  h4 { font-size: 16px; margin: 20px 0 8px; }
+  details {
+    border: 1px solid #e5e5e5; border-radius: 6px;
+    padding: 12px 16px; margin-bottom: 10px; background: #fcfcfc;
+  }
+  details summary {
+    font-weight: 500; cursor: pointer; font-size: 15px;
+  }
+  details[open] summary { margin-bottom: 10px; }
+  details p { font-size: 14px; margin-bottom: 8px; color: #333; }
+  details p strong { color: #111; }
   footer { font-size: 13px; color: #999; padding-top: 30px; border-top: 1px solid #e5e5e5; }
 </style>
 </head>
@@ -54,66 +72,108 @@
   <div class="container">
     <header>
       <h1>Hanna Sarfati</h1>
-      <p class="tagline">Marketing digital para pequeños negocios — estrategia, contenido y resultados medibles</p>
+      <p class="tagline">Digital marketing for small businesses — strategy, content and measurable results</p>
       <div class="contact-links">
         <a href="mailto:hannasarfati24@hotmail.com">Email</a>
       </div>
     </header>
 
     <section>
-      <h2>Sobre mí</h2>
-      <p>Ayudo a negocios chicos a mejorar su presencia digital con estrategias de marketing basadas en datos. Combino formación en marketing digital con una mirada psicológica del comportamiento del consumidor para crear campañas que realmente conectan.</p>
+      <h2>About</h2>
+      <p>I help small businesses improve their digital presence through data-driven marketing strategy. I combine formal digital marketing training with a background in psychology to build campaigns that genuinely connect with people.</p>
     </section>
 
     <section>
-      <h2>Formación</h2>
-      <p>Certificación de Marketing Digital de Google — en curso (módulo 3 de 8, completados: Fundamentos, SEO/SEM y Redes sociales).</p>
+      <h2>Certification</h2>
+      <p>Google Digital Marketing &amp; E-commerce Professional Certificate — completed.</p>
       <div class="skill-tags">
         <span>ROI / LTV</span>
-        <span>A/B testing en Google Ads</span>
-        <span>Análisis con GA4</span>
-        <span>Visualización de datos</span>
-        <span>Gestión de stakeholders</span>
+        <span>A/B testing in Google Ads</span>
+        <span>GA4 analytics</span>
+        <span>Data visualization</span>
+        <span>Stakeholder management</span>
       </div>
     </section>
 
     <section>
-      <h2>Servicios</h2>
+      <h2>Services</h2>
       <ul class="services-list">
-        <li>Estrategia de redes sociales y contenido</li>
-        <li>Auditoría y optimización de campañas de Ads</li>
-        <li>Análisis de métricas y reportes de rendimiento</li>
+        <li>Social media and content strategy</li>
+        <li>Ad campaign audit and optimization</li>
+        <li>Performance metrics and reporting</li>
       </ul>
     </section>
 
     <section>
-      <h2>Proyectos</h2>
+      <h2>Projects</h2>
       <div class="case-study">
-        <span class="tag">Estrategia de contenido</span>
-        <h3>Estrategia editorial para redes (Instagram/TikTok)</h3>
-        <p>Desarrollo de una línea editorial propia combinando psicología y reflexión personal: framework de hooks para captar atención en los primeros segundos, calendario editorial de cuatro semanas, y flujo de producción con herramientas como CapCut y Celtx.</p>
+        <span class="tag">Content strategy</span>
+        <h3>Editorial strategy for social media</h3>
+        <p>Built an original content line blending psychology and personal reflection: a hook-writing framework to capture attention in the first seconds, a four-week editorial calendar, and a production workflow using tools like CapCut and Celtx.</p>
       </div>
     </section>
 
     <section>
-      <h2>Casos de estudio</h2>
+      <h2>Case studies</h2>
 
       <div class="case-study">
-        <span class="tag">Gastronomía · Diagnóstico</span>
-        <h3>Restaurante</h3>
-        <p>Diagnóstico integral de la presencia digital del negocio: análisis de redes sociales, identificación de oportunidades de contenido y propuesta de estrategia para mejorar el alcance y la conversión. Implementación en curso.</p>
+        <span class="tag">Independent audit · Italian &amp; Argentine restaurant</span>
+        <h3>Go Nonna</h3>
+        <p class="subtitle">Digital marketing audit · Long Island City, New York</p>
+
+        <div class="stats-row">
+          <div class="stat"><div class="num">4.6 ★</div><div class="label">Google rating — highest among direct competitors</div></div>
+          <div class="stat"><div class="num">610</div><div class="label">Total reviews</div></div>
+          <div class="stat"><div class="num">3.5×</div><div class="label">More reviews held by the leading competitor</div></div>
+        </div>
+
+        <p>Go Nonna does not have a product or experience problem: it matches or beats every direct competitor in Long Island City on rating. The problem is visibility. It competes against restaurants with up to 3.5 times more reviews, and its most distinctive asset — being the only place in the area combining Italian and Argentine cooking — goes almost entirely uncommunicated.</p>
+        <p>I audited its Google Business Profile, website, Instagram and Facebook, and benchmarked the business against five comparable Italian restaurants nearby. I identified three priority opportunities, all executable without ad spend.</p>
+
+        <div class="role-note">
+          <strong>My role:</strong> I worked at Go Nonna as a server for an extended period, which gave me direct insight into how the restaurant operates and who its diners are. I carried out this audit independently, alongside my digital marketing training, without access to internal accounts or sales data. The analysis draws exclusively on public, observable information.
+        </div>
+
+        <h4>The market gap</h4>
+        <p>Every competitor reviewed competes on the same claim: "authentic Italian." None occupies the Italian-Argentine space, or the neighbourhood-trattoria angle. That is the differentiated value proposition Go Nonna already owns and isn't using.</p>
+
+        <h4>Three priorities</h4>
+
+        <details>
+          <summary>1. Incorrect categories on the Google Business Profile</summary>
+          <p><strong>Problem —</strong> The profile is classified under categories that don't describe the business, diluting its relevance in local searches.</p>
+          <p><strong>Evidence —</strong> Alongside Italian and Argentine restaurant, the profile is listed as "shipping service" and "diner."</p>
+          <p><strong>Proposal —</strong> Clean up the category list, keeping only the accurate ones. Standardise a single address across all platforms.</p>
+          <p><strong>Metric —</strong> Monthly searches surfacing the profile, and local ranking for "italian restaurant Long Island City."</p>
+        </details>
+
+        <details>
+          <summary>2. The differentiator and promotions are only communicated sporadically</summary>
+          <p><strong>Problem —</strong> The most distinctive element of the business goes unstated, and promotions are announced once and then disappear.</p>
+          <p><strong>Evidence —</strong> No competitor reviewed offers both Italian and Argentine cooking, yet most channels present Go Nonna simply as "Italian." The happy hour was posted once with no recurrence, and appears neither on the website nor on Google.</p>
+          <p><strong>Proposal —</strong> State the Italian-Argentine proposition in the bio, homepage and Google description. Turn the happy hour into recurring communication: fixed weekly post, permanent highlight, site mention, Google update post.</p>
+          <p><strong>Metric —</strong> Website clicks and direction requests; covers during the happy hour window before and after.</p>
+        </details>
+
+        <details>
+          <summary>3. Social content volume far below potential</summary>
+          <p><strong>Problem —</strong> With fewer than a hundred posts total, social channels generate almost no discovery among new customers.</p>
+          <p><strong>Evidence —</strong> Roughly 75 posts and 1,416 followers since 2019, no short-form video. Customers tag the restaurant on their own without that content being reused.</p>
+          <p><strong>Proposal —</strong> Reshare every customer tag to stories; two short unedited videos per week; mirror Facebook automatically.</p>
+          <p><strong>Metric —</strong> Reach among non-followers, and customer mentions per month.</p>
+        </details>
       </div>
 
       <div class="case-study pending">
-        <span class="tag">Retail — próximamente</span>
-        <h3>Marca de calzado</h3>
-        <p>Diagnóstico y propuesta de conversión web en desarrollo.</p>
+        <span class="tag">Retail — coming soon</span>
+        <h3>Footwear brand</h3>
+        <p>Web conversion diagnostic and proposal in progress.</p>
       </div>
 
       <div class="case-study pending">
-        <span class="tag">E-commerce — próximamente</span>
-        <h3>Marca de e-commerce</h3>
-        <p>Análisis de métricas de Ads en desarrollo.</p>
+        <span class="tag">E-commerce — coming soon</span>
+        <h3>E-commerce brand</h3>
+        <p>Ads performance analysis in progress.</p>
       </div>
     </section>
 
