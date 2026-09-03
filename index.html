@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hanna Sarfati — Digital Marketing</title>
+<title>Hanna Sarfati — Marketing Digital</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
-    color: #222;
-    line-height: 1.6;
-    background: #fafafa;
+    color: #222; line-height: 1.6; background: #fafafa;
   }
-  .container { max-width: 720px; margin: 0 auto; padding: 60px 24px; }
+  .container { max-width: 760px; margin: 0 auto; padding: 60px 24px; }
+  .lang-switch { font-size: 13px; margin-bottom: 30px; }
+  .lang-switch a { color: #888; text-decoration: none; margin-right: 10px; }
+  .lang-switch a.active { color: #222; font-weight: 600; }
   header { margin-bottom: 60px; }
   h1 { font-size: 32px; font-weight: 600; margin-bottom: 8px; }
   .tagline { font-size: 18px; color: #555; margin-bottom: 20px; }
@@ -26,8 +27,10 @@
     color: #888; margin-bottom: 16px; font-weight: 600;
   }
   p { margin-bottom: 12px; }
-  .services-list { list-style: none; }
-  .services-list li { padding: 14px 0; border-bottom: 1px solid #e5e5e5; }
+  ul { margin: 0 0 12px 20px; }
+  li { margin-bottom: 6px; }
+  .services-list { list-style: none; margin: 0; }
+  .services-list li { padding: 14px 0; border-bottom: 1px solid #e5e5e5; margin: 0; }
   .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
   .skill-tags span {
     font-size: 13px; background: #eee; color: #444;
@@ -51,129 +54,181 @@
   .stat .label { font-size: 13px; color: #666; }
   .role-note {
     background: #f7f7f7; border-left: 3px solid #ccc;
-    padding: 14px 16px; font-size: 14px; color: #444;
-    margin: 20px 0;
+    padding: 14px 16px; font-size: 14px; color: #444; margin: 20px 0;
   }
-  h4 { font-size: 16px; margin: 20px 0 8px; }
+  h4 { font-size: 16px; margin: 24px 0 8px; }
   details {
     border: 1px solid #e5e5e5; border-radius: 6px;
     padding: 12px 16px; margin-bottom: 10px; background: #fcfcfc;
   }
-  details summary {
-    font-weight: 500; cursor: pointer; font-size: 15px;
-  }
+  details summary { font-weight: 500; cursor: pointer; font-size: 15px; }
   details[open] summary { margin-bottom: 10px; }
-  details p { font-size: 14px; margin-bottom: 8px; color: #333; }
+  details p, details li { font-size: 14px; color: #333; }
   details p strong { color: #111; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 12px; }
+  th { text-align: left; padding: 8px; border-bottom: 2px solid #ddd; font-weight: 600; }
+  td { padding: 8px; border-bottom: 1px solid #eee; vertical-align: top; }
+  .own-row { background: #f4f8f4; font-weight: 500; }
   footer { font-size: 13px; color: #999; padding-top: 30px; border-top: 1px solid #e5e5e5; }
 </style>
 </head>
 <body>
   <div class="container">
+    <div class="lang-switch">
+      <a href="index.html">EN</a>
+      <a href="es.html" class="active">ES</a>
+    </div>
+
     <header>
       <h1>Hanna Sarfati</h1>
-      <p class="tagline">Digital marketing for small businesses — strategy, content and measurable results</p>
+      <p class="tagline">Marketing digital para pequeños negocios — estrategia, contenido y resultados medibles</p>
       <div class="contact-links">
         <a href="mailto:hannasarfati24@hotmail.com">Email</a>
       </div>
     </header>
 
     <section>
-      <h2>About</h2>
-      <p>I help small businesses improve their digital presence through data-driven marketing strategy. I combine formal digital marketing training with a background in psychology to build campaigns that genuinely connect with people.</p>
+      <h2>Sobre mí</h2>
+      <p>Ayudo a negocios chicos a mejorar su presencia digital con estrategias de marketing basadas en datos. Combino formación en marketing digital con una mirada psicológica del comportamiento del consumidor para crear campañas que realmente conectan.</p>
     </section>
 
     <section>
-      <h2>Certification</h2>
-      <p>Google Digital Marketing &amp; E-commerce Professional Certificate — completed.</p>
+      <h2>Certificación</h2>
+      <p>Certificado Profesional de Marketing Digital y E-commerce de Google — completado.</p>
       <div class="skill-tags">
         <span>ROI / LTV</span>
-        <span>A/B testing in Google Ads</span>
-        <span>GA4 analytics</span>
-        <span>Data visualization</span>
-        <span>Stakeholder management</span>
+        <span>A/B testing en Google Ads</span>
+        <span>Analítica con GA4</span>
+        <span>Visualización de datos</span>
+        <span>Gestión de stakeholders</span>
       </div>
     </section>
 
     <section>
-      <h2>Services</h2>
+      <h2>Servicios</h2>
       <ul class="services-list">
-        <li>Social media and content strategy</li>
-        <li>Ad campaign audit and optimization</li>
-        <li>Performance metrics and reporting</li>
+        <li>Estrategia de redes sociales y contenido</li>
+        <li>Auditoría y optimización de campañas de Ads</li>
+        <li>Análisis de métricas y reportes de rendimiento</li>
       </ul>
     </section>
 
     <section>
-      <h2>Projects</h2>
-      <div class="case-study">
-        <span class="tag">Content strategy</span>
-        <h3>Editorial strategy for social media</h3>
-        <p>Built an original content line blending psychology and personal reflection: a hook-writing framework to capture attention in the first seconds, a four-week editorial calendar, and a production workflow using tools like CapCut and Celtx.</p>
-      </div>
-    </section>
-
-    <section>
-      <h2>Case studies</h2>
+      <h2>Casos de estudio</h2>
 
       <div class="case-study">
-        <span class="tag">Independent audit · Italian &amp; Argentine restaurant</span>
+        <span class="tag">Auditoría independiente · Gastronomía</span>
         <h3>Go Nonna</h3>
-        <p class="subtitle">Digital marketing audit · Long Island City, New York</p>
+        <p class="subtitle">Cocina italiana y argentina · Long Island City, Queens, Nueva York</p>
 
         <div class="stats-row">
-          <div class="stat"><div class="num">4.6 ★</div><div class="label">Google rating — highest among direct competitors</div></div>
-          <div class="stat"><div class="num">610</div><div class="label">Total reviews</div></div>
-          <div class="stat"><div class="num">3.5×</div><div class="label">More reviews held by the leading competitor</div></div>
+          <div class="stat"><div class="num">4,6 ★</div><div class="label">Mejor calificación entre sus competidores directos</div></div>
+          <div class="stat"><div class="num">610</div><div class="label">Reseñas totales</div></div>
+          <div class="stat"><div class="num">3,5×</div><div class="label">Más reseñas tiene el competidor que domina la zona</div></div>
         </div>
 
-        <p>Go Nonna does not have a product or experience problem: it matches or beats every direct competitor in Long Island City on rating. The problem is visibility. It competes against restaurants with up to 3.5 times more reviews, and its most distinctive asset — being the only place in the area combining Italian and Argentine cooking — goes almost entirely uncommunicated.</p>
-        <p>I audited its Google Business Profile, website, Instagram and Facebook, and benchmarked the business against five comparable Italian restaurants nearby. I identified three priority opportunities, all executable without ad spend.</p>
+        <h4>Resumen ejecutivo</h4>
+        <p>Go Nonna no tiene un problema de producto ni de experiencia: con 4,6 ★ sobre 610 reseñas iguala o supera en calificación a todos sus competidores directos de Long Island City. El problema es de visibilidad — compite contra locales con hasta 3,5 veces más reseñas y mucha más actividad digital.</p>
+        <p>Identifiqué tres oportunidades prioritarias, todas ejecutables sin inversión publicitaria: corregir las categorías del perfil de Google, comunicar de forma sostenida el diferencial y las promociones que hoy se cuentan de manera puntual, y activar contenido orgánico apoyado en los propios clientes.</p>
 
         <div class="role-note">
-          <strong>My role:</strong> I worked at Go Nonna as a server for an extended period, which gave me direct insight into how the restaurant operates and who its diners are. I carried out this audit independently, alongside my digital marketing training, without access to internal accounts or sales data. The analysis draws exclusively on public, observable information.
+          <strong>Contexto y alcance:</strong> trabajé como mesera en Go Nonna durante un período prolongado, lo que me dio visión directa del funcionamiento del local y del perfil de sus comensales. Este diagnóstico lo realicé de forma independiente, en paralelo a mi formación en marketing digital; no formó parte de mis tareas en el restaurante. No tuve acceso a cuentas internas — ni Meta Business Suite, ni Analytics, ni datos de ventas —, así que el análisis se basa exclusivamente en información pública y observable. El negocio no invierte en pauta por decisión del dueño, de modo que toda la estrategia propuesta es orgánica.
         </div>
 
-        <h4>The market gap</h4>
-        <p>Every competitor reviewed competes on the same claim: "authentic Italian." None occupies the Italian-Argentine space, or the neighbourhood-trattoria angle. That is the differentiated value proposition Go Nonna already owns and isn't using.</p>
+        <h4>Arquetipo de cliente</h4>
+        <ul>
+          <li>Parejas, grupos de amigos y familias, con edad predominante entre 30 y 50 años.</li>
+          <li>Mezcla de vecinos regulares del barrio y turistas; Long Island City tiene además fuerte presencia de comunidad asiática, reflejada en la clientela.</li>
+          <li>Buscan comida casera, porciones generosas y trato personal — varias reseñas nombran al personal por su nombre.</li>
+          <li>Valoran un ambiente íntimo y sin pretensiones, con buena relación cantidad-precio para el estándar de Nueva York.</li>
+          <li>Fricciones que ellos mismos señalan: tiempos de espera en horarios pico y un local chico que conviene reservar con anticipación.</li>
+        </ul>
 
-        <h4>Three priorities</h4>
+        <h4>Análisis de competencia</h4>
+        <table>
+          <tr><th>Competidor</th><th>Rating</th><th>Reseñas</th><th>Observación</th></tr>
+          <tr class="own-row"><td>Go Nonna</td><td>4,6</td><td>610</td><td>Mejor rating del grupo, volumen de reseñas medio.</td></tr>
+          <tr><td>Maiella</td><td>4,4</td><td>2.109</td><td>Peor rating, 3,5× más reseñas. Domina la visibilidad de la zona.</td></tr>
+          <tr><td>Osteria Brooklyn @ LIC</td><td>4,5</td><td>969</td><td>Ubicación sobre el agua como diferencial.</td></tr>
+          <tr><td>Manetta's Ristorante</td><td>4,6</td><td>952</td><td>Mismo rating, 55% más reseñas. Clásico del barrio.</td></tr>
+          <tr><td>Manducatis Rustica</td><td>4,5</td><td>588</td><td>Volumen similar; abre sólo de miércoles a sábado.</td></tr>
+          <tr><td>mercato LIC</td><td>4,6</td><td>178</td><td>Comunica activamente su happy hour — compite directo en esa propuesta.</td></tr>
+        </table>
+        <p><strong>El hueco:</strong> todos los competidores compiten por "auténtico italiano". Ninguno ocupa el espacio italiano-argentino ni el ángulo de bodegón de barrio. Ahí está la propuesta de valor diferencial disponible.</p>
 
+        <h4>Diagnóstico de embudo</h4>
+        <table>
+          <tr><th>Etapa</th><th>Estado</th><th>Evidencia</th></tr>
+          <tr><td>Conocimiento</td><td>🔴 Falla</td><td>Rating igual o mejor que la competencia, pero con mucho menos volumen de reseñas y alcance social. Quien lo conoce lo valora; el problema es cuánta gente nueva llega a conocerlo.</td></tr>
+          <tr><td>Consideración</td><td>🟡 Parcial</td><td>Las reseñas y el menú generan confianza, pero el diferencial italiano-argentino no se comunica y el happy hour sólo se anunció de forma puntual.</td></tr>
+          <tr><td>Conversión</td><td>🟢 Sólida</td><td>Reserva y pedido online funcionan; horarios y ubicación claros.</td></tr>
+          <tr><td>Fidelización</td><td>🟡 Desaprovechada</td><td>Alta satisfacción declarada sin ningún mecanismo para convertirla en contenido, recomendación o recompra.</td></tr>
+        </table>
+        <p><strong>Etapa crítica:</strong> conocimiento. Todo lo que ocurre después de que el cliente llega funciona bien; el cuello de botella está en cuánta gente nueva lo descubre.</p>
+
+        <h4>Auditoría de presencia digital</h4>
         <details>
-          <summary>1. Incorrect categories on the Google Business Profile</summary>
-          <p><strong>Problem —</strong> The profile is classified under categories that don't describe the business, diluting its relevance in local searches.</p>
-          <p><strong>Evidence —</strong> Alongside Italian and Argentine restaurant, the profile is listed as "shipping service" and "diner."</p>
-          <p><strong>Proposal —</strong> Clean up the category list, keeping only the accurate ones. Standardise a single address across all platforms.</p>
-          <p><strong>Metric —</strong> Monthly searches surfacing the profile, and local ranking for "italian restaurant Long Island City."</p>
+          <summary>Google Business Profile</summary>
+          <p><strong>Estado —</strong> 4,6 ★ sobre 610 reseñas. Perfil completo y con horarios correctos, pero clasificado además con categorías que no corresponden ("servicio de envíos", "diner"). Se responden sobre todo las reseñas negativas.</p>
+          <p><strong>Lectura —</strong> La reputación es el activo más fuerte del negocio. Las categorías erróneas diluyen la relevancia en búsquedas locales y su corrección no tiene costo.</p>
+        </details>
+        <details>
+          <summary>Sitio web</summary>
+          <p><strong>Estado —</strong> Carga rápido, diseño claro, título descriptivo. Reserva y pedido online funcionando. Las fotos de platos datan de 2019 y el happy hour no figura en ningún lugar.</p>
+          <p><strong>Lectura —</strong> Base técnica sólida, sin necesidad de rehacer. El problema no es el camino de conversión sino qué se comunica: no hay motivos nuevos para elegirlo.</p>
+        </details>
+        <details>
+          <summary>Instagram (@gononnalic)</summary>
+          <p><strong>Estado —</strong> 1.416 seguidores y ~75 publicaciones acumuladas para un local abierto desde 2019. Predomina la foto de plato producida; sin uso de video corto. Los clientes etiquetan por cuenta propia y el local no lo reutiliza.</p>
+          <p><strong>Lectura —</strong> Frecuencia muy por debajo del potencial. El formato de mayor alcance orgánico está sin usar y hay contenido gratuito de clientes desaprovechado.</p>
+        </details>
+        <details>
+          <summary>Facebook y marca</summary>
+          <p><strong>Facebook —</strong> Contenido duplicado de Instagram, con menos movimiento: esfuerzo dividido sin retorno proporcional.</p>
+          <p><strong>Marca —</strong> Identidad clara y coherente entre local, sitio y redes: calidez, informalidad, estética de bodegón. La fusión italiano-argentina casi no se comunica. La marca no necesita redefinirse; necesita decirse.</p>
         </details>
 
+        <h4>Prioridades</h4>
         <details>
-          <summary>2. The differentiator and promotions are only communicated sporadically</summary>
-          <p><strong>Problem —</strong> The most distinctive element of the business goes unstated, and promotions are announced once and then disappear.</p>
-          <p><strong>Evidence —</strong> No competitor reviewed offers both Italian and Argentine cooking, yet most channels present Go Nonna simply as "Italian." The happy hour was posted once with no recurrence, and appears neither on the website nor on Google.</p>
-          <p><strong>Proposal —</strong> State the Italian-Argentine proposition in the bio, homepage and Google description. Turn the happy hour into recurring communication: fixed weekly post, permanent highlight, site mention, Google update post.</p>
-          <p><strong>Metric —</strong> Website clicks and direction requests; covers during the happy hour window before and after.</p>
+          <summary>1. Categorías incorrectas en el perfil de Google</summary>
+          <p><strong>Problema —</strong> El perfil está clasificado con categorías que no corresponden al negocio, lo que diluye su relevancia en las búsquedas locales que importan.</p>
+          <p><strong>Evidencia —</strong> Además de restaurante italiano y argentino, figura como "servicio de envíos" y "diner". Aparte, el negocio se lista con dos direcciones válidas de un mismo edificio en esquina (44th Drive y 11th St) según la plataforma.</p>
+          <p><strong>Etapa —</strong> Conocimiento</p>
+          <p><strong>Propuesta —</strong> Depurar las categorías dejando sólo las correctas (restaurante italiano, argentino, familiar). Como acción menor, unificar una única dirección en todas las plataformas.</p>
+          <p><strong>Métrica —</strong> Búsquedas mensuales que muestran el perfil y posición en el ranking local para "italian restaurant Long Island City".</p>
+        </details>
+        <details>
+          <summary>2. El diferencial y las promociones se comunican de forma puntual</summary>
+          <p><strong>Problema —</strong> El elemento más distintivo del negocio no se comunica, y sus promociones se anuncian una sola vez y desaparecen: quien evalúa dónde comer no encuentra motivos para elegirlo por encima de la competencia.</p>
+          <p><strong>Evidencia —</strong> Ningún competidor relevado ofrece cocina italiana y argentina, pero la mayoría de los canales presentan a Go Nonna simplemente como "italiano". El happy hour se publicó como una imagen suelta en Instagram y Facebook, sin recurrencia, y no figura en el sitio ni en Google — mientras mercato LIC sí lo comunica de forma sostenida y aparece mencionado en sus reseñas.</p>
+          <p><strong>Etapa —</strong> Consideración</p>
+          <p><strong>Propuesta —</strong> Articular la propuesta italiano-argentina en la biografía de Instagram, la home del sitio y la descripción de Google. Convertir el happy hour en comunicación recurrente: publicación fija semanal, destacado permanente en Instagram, mención en el sitio y publicación de novedad en Google Business Profile.</p>
+          <p><strong>Métrica —</strong> Clics al sitio y solicitudes de indicaciones desde Google Business Profile; consumo en la franja de happy hour antes y después.</p>
+        </details>
+        <details>
+          <summary>3. Volumen de contenido social muy por debajo del potencial</summary>
+          <p><strong>Problema —</strong> Con menos de cien publicaciones acumuladas, las redes no generan descubrimiento de clientes nuevos, pese a que el local produce material espontáneo todos los días.</p>
+          <p><strong>Evidencia —</strong> ~75 publicaciones y 1.416 seguidores desde 2019, con formato dominante de foto producida y sin video corto. Los clientes etiquetan por cuenta propia sin que el local reutilice ese contenido.</p>
+          <p><strong>Etapa —</strong> Conocimiento</p>
+          <p><strong>Propuesta —</strong> Esquema de contenido de bajo esfuerzo: republicar en historias cada mención o etiqueta de clientes; dos videos cortos semanales sin edición profesional (pasta fresca, plato del día, cocina en movimiento); usar Facebook como espejo automático en vez de gestionarlo aparte.</p>
+          <p><strong>Métrica —</strong> Alcance de cuentas no seguidoras y cantidad de menciones o etiquetas de clientes por mes.</p>
         </details>
 
-        <details>
-          <summary>3. Social content volume far below potential</summary>
-          <p><strong>Problem —</strong> With fewer than a hundred posts total, social channels generate almost no discovery among new customers.</p>
-          <p><strong>Evidence —</strong> Roughly 75 posts and 1,416 followers since 2019, no short-form video. Customers tag the restaurant on their own without that content being reused.</p>
-          <p><strong>Proposal —</strong> Reshare every customer tag to stories; two short unedited videos per week; mirror Facebook automatically.</p>
-          <p><strong>Metric —</strong> Reach among non-followers, and customer mentions per month.</p>
-        </details>
+        <h4>Medición y siguientes pasos</h4>
+        <p>Antes de implementar habría que fijar una línea de base: reseñas totales y ritmo de reseñas nuevas, visualizaciones y clics del perfil de Google, alcance de cuentas no seguidoras en Instagram, y reservas y pedidos online mensuales. Plazo razonable de evaluación: 90 días.</p>
+        <p>Quedaron identificadas y deliberadamente no priorizadas: actualizar las fotos del sitio (son de 2019), responder también las reseñas positivas, anticipar en el contenido los tiempos de espera en horarios pico, y evaluar una captación simple de correos en el local.</p>
       </div>
 
       <div class="case-study pending">
-        <span class="tag">Retail — coming soon</span>
-        <h3>Footwear brand</h3>
-        <p>Web conversion diagnostic and proposal in progress.</p>
+        <span class="tag">Retail — próximamente</span>
+        <h3>Marca de calzado</h3>
+        <p>Diagnóstico y propuesta de conversión web en desarrollo.</p>
       </div>
 
       <div class="case-study pending">
-        <span class="tag">E-commerce — coming soon</span>
-        <h3>E-commerce brand</h3>
-        <p>Ads performance analysis in progress.</p>
+        <span class="tag">E-commerce — próximamente</span>
+        <h3>Marca de e-commerce</h3>
+        <p>Análisis de métricas de Ads en desarrollo.</p>
       </div>
     </section>
 
