@@ -1,9 +1,27 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hanna Sarfati — Marketing Digital</title>
+<title>Hanna Sarfati — Marketing digital</title>
+<meta name="description" content="Marketing digital para pequeños negocios: auditorías, estrategia de contenido y análisis de métricas. Casos de estudio: Go Nonna y Justina Shoes.">
+<meta property="og:title" content="Hanna Sarfati — Marketing digital / Digital marketing">
+<meta property="og:description" content="Casos de estudio y servicios de marketing digital · Case studies and digital marketing services">
+<meta property="og:type" content="website">
+<script>
+(function () {
+  var l;
+  try {
+    var p = new URLSearchParams(location.search).get('lang');
+    l = (p === 'es' || p === 'en') ? p : localStorage.getItem('lang');
+  } catch (e) {}
+  if (l !== 'es' && l !== 'en') {
+    l = (navigator.language || 'es').toLowerCase().indexOf('es') === 0 ? 'es' : 'en';
+  }
+  document.documentElement.className = l;
+  document.documentElement.lang = l;
+})();
+</script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -12,8 +30,6 @@
   }
   .container { max-width: 760px; margin: 0 auto; padding: 60px 24px; }
   .lang-switch { font-size: 13px; margin-bottom: 30px; }
-  .lang-switch a { color: #888; text-decoration: none; margin-right: 10px; }
-  .lang-switch a.active { color: #222; font-weight: 600; }
   header { margin-bottom: 60px; }
   h1 { font-size: 32px; font-weight: 600; margin-bottom: 8px; }
   .tagline { font-size: 18px; color: #555; margin-bottom: 20px; }
@@ -70,15 +86,40 @@
   td { padding: 8px; border-bottom: 1px solid #eee; vertical-align: top; }
   .own-row { background: #f4f8f4; font-weight: 500; }
   footer { font-size: 13px; color: #999; padding-top: 30px; border-top: 1px solid #e5e5e5; }
+
+  html.es [data-l="en"], html.en [data-l="es"] { display: none !important; }
+  .lang-switch button {
+    background: none; border: 0; font: inherit; font-size: 13px; color: #888;
+    cursor: pointer; padding: 4px 6px; margin-right: 4px;
+  }
+  .lang-switch button[aria-pressed="true"] { color: #222; font-weight: 600; }
+  .case-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .case-nav a {
+    font-size: 14px; color: #222; text-decoration: none;
+    border: 1px solid #ddd; border-radius: 16px; padding: 5px 14px; background: white;
+  }
+  .case-nav span { font-size: 14px; color: #999; padding: 5px 4px; }
+  .case-study { scroll-margin-top: 16px; }
+  .table-wrap { overflow-x: auto; margin-bottom: 12px; }
+  .table-wrap table { margin-bottom: 0; }
+  .table-wrap table.compact { min-width: 560px; }
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid #222; outline-offset: 2px; }
+  @media (max-width: 600px) {
+    .container { padding: 36px 18px; }
+    .case-study { padding: 20px 16px; }
+    h1 { font-size: 28px; }
+  }
 </style>
 </head>
 <body>
   <div class="container">
     <div class="lang-switch">
-      <a href="index.html">EN</a>
-      <a href="es.html" class="active">ES</a>
+      <button type="button" data-set="en" aria-pressed="false">EN</button>
+      <button type="button" data-set="es" aria-pressed="true">ES</button>
     </div>
 
+    <!-- ===================== ESPAÑOL ===================== -->
+    <div data-l="es">
     <header>
       <h1>Hanna Sarfati</h1>
       <p class="tagline">Marketing digital para pequeños negocios — estrategia, contenido y resultados medibles</p>
@@ -115,8 +156,13 @@
 
     <section>
       <h2>Casos de estudio</h2>
+      <nav class="case-nav" aria-label="Casos de estudio">
+        <a href="#go-nonna">Go Nonna</a>
+        <a href="#justina-shoes">Justina Shoes</a>
+        <span>E-commerce · próximamente</span>
+      </nav>
 
-      <div class="case-study">
+      <div class="case-study" id="go-nonna">
         <span class="tag">Auditoría independiente · Gastronomía</span>
         <h3>Go Nonna</h3>
         <p class="subtitle">Cocina italiana y argentina · Long Island City, Queens, Nueva York</p>
@@ -145,7 +191,7 @@
         </ul>
 
         <h4>Análisis de competencia</h4>
-        <table>
+        <div class="table-wrap"><table>
           <tr><th>Competidor</th><th>Rating</th><th>Reseñas</th><th>Observación</th></tr>
           <tr class="own-row"><td>Go Nonna</td><td>4,6</td><td>610</td><td>Mejor rating del grupo, volumen de reseñas medio.</td></tr>
           <tr><td>Maiella</td><td>4,4</td><td>2.109</td><td>Peor rating, 3,5× más reseñas. Domina la visibilidad de la zona.</td></tr>
@@ -153,17 +199,17 @@
           <tr><td>Manetta's Ristorante</td><td>4,6</td><td>952</td><td>Mismo rating, 55% más reseñas. Clásico del barrio.</td></tr>
           <tr><td>Manducatis Rustica</td><td>4,5</td><td>588</td><td>Volumen similar; abre sólo de miércoles a sábado.</td></tr>
           <tr><td>mercato LIC</td><td>4,6</td><td>178</td><td>Comunica activamente su happy hour — compite directo en esa propuesta.</td></tr>
-        </table>
+        </table></div>
         <p><strong>El hueco:</strong> todos los competidores compiten por "auténtico italiano". Ninguno ocupa el espacio italiano-argentino ni el ángulo de bodegón de barrio. Ahí está la propuesta de valor diferencial disponible.</p>
 
         <h4>Diagnóstico de embudo</h4>
-        <table>
+        <div class="table-wrap"><table>
           <tr><th>Etapa</th><th>Estado</th><th>Evidencia</th></tr>
           <tr><td>Conocimiento</td><td>🔴 Falla</td><td>Rating igual o mejor que la competencia, pero con mucho menos volumen de reseñas y alcance social. Quien lo conoce lo valora; el problema es cuánta gente nueva llega a conocerlo.</td></tr>
           <tr><td>Consideración</td><td>🟡 Parcial</td><td>Las reseñas y el menú generan confianza, pero el diferencial italiano-argentino no se comunica y el happy hour sólo se anunció de forma puntual.</td></tr>
           <tr><td>Conversión</td><td>🟢 Sólida</td><td>Reserva y pedido online funcionan; horarios y ubicación claros.</td></tr>
           <tr><td>Fidelización</td><td>🟡 Desaprovechada</td><td>Alta satisfacción declarada sin ningún mecanismo para convertirla en contenido, recomendación o recompra.</td></tr>
-        </table>
+        </table></div>
         <p><strong>Etapa crítica:</strong> conocimiento. Todo lo que ocurre después de que el cliente llega funciona bien; el cuello de botella está en cuánta gente nueva lo descubre.</p>
 
         <h4>Auditoría de presencia digital</h4>
@@ -219,22 +265,24 @@
         <p>Quedaron identificadas y deliberadamente no priorizadas: actualizar las fotos del sitio (son de 2019), responder también las reseñas positivas, anticipar en el contenido los tiempos de espera en horarios pico, y evaluar una captación simple de correos en el local.</p>
       </div>
 
-      <div class="case-study pending">
-        <span class="tag">Retail — próximamente</span>
-        <h3>Marca de calzado</h3>
-        <p>Diagnóstico y propuesta de conversión web en desarrollo.</p>
-      </div>
+      <div class="case-study" id="justina-shoes">
+        <span class="tag">Auditoría + benchmark competitivo · Calzado / E-commerce</span>
+        <h3>Justina Shoes</h3>
+        <p class="subtitle">Fabricante de calzado de mujer en cuero · Ramos Mejía, Buenos Aires · Venta mayorista y online a todo el país</p>
 
-      <div class="case-study pending">
-        <span class="tag">E-commerce — próximamente</span>
-        <h3>Marca de e-commerce</h3>
-        <p>Análisis de métricas de Ads en desarrollo.</p>
-      </div>
-    </section>
+        <div class="stats-row">
+          <div class="stat"><div class="num">123K</div><div class="label">Seguidores entre sus dos cuentas de Instagram</div></div>
+          <div class="stat"><div class="num">0</div><div class="label">Reseñas visibles en todo el sitio</div></div>
+          <div class="stat"><div class="num">1 de 4</div><div class="label">Única marca del benchmark sin envío gratis, y la de precio más alto</div></div>
+        </div>
 
-    <footer>
-      <p>Hanna Sarfati · Buenos Aires · 2026</p>
-    </footer>
-  </div>
-</body>
-</html>
+        <h4>Resumen ejecutivo</h4>
+        <p>Justina Shoes vende poco online pese a tener lo que a la mayoría de las marcas le falta: fábrica propia, producto de cuero, más de 123.000 seguidores, cuenta verificada, equipo de marketing y pauta activa. El negocio lo atribuía a la economía y a la competencia de calzado sintético barato. Ese contexto es real, pero afecta a todo el rubro por igual y no habilita ninguna acción, así que el análisis se concentró en lo que sí depende de la marca.</p>
+        <p>El problema no es de alcance sino de consideración y conversión. Todo lo que justifica el precio ya está escrito, pero aparece debajo del botón de compra; la marca afirma calidad sin mostrar ninguna prueba, ni una sola reseña; y la historia de fábrica, su activo más difícil de copiar, no aparece en ningún lado. Propuse tres prioridades ejecutables sin presupuesto adicional de medios, una reasignación de la pauta existente y un benchmark contra tres competidores del rubro.</p>
+
+        <div class="role-note">
+          <strong>Contexto y alcance:</strong> Justina Shoes es una marca familiar en la que participé en producción de contenido, campañas de fotos y análisis de estrategia. Esta auditoría la hice sobre información pública — sitio en móvil y escritorio, fichas de producto, Instagram, TikTok y Pinterest — más contexto aportado por el negocio. No tuve acceso a Analytics, a las cuentas publicitarias ni a datos de ventas: ningún dato fue estimado, y lo que es hipótesis está señalado como tal.
+        </div>
+
+        <h4>Por qué la confianza pesa tanto en este rubro</h4>
+        <p>El calzado de cuero es una compra cara, poco frecuente y que no se puede probar antes. Con ingresos ajustados, la reacción más común no es pasarse a algo más barato sino postergar el reemplazo: el competidor real es la decisión de no comprar todavía. Por eso las señales de confian
