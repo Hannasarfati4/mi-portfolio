@@ -10,279 +10,644 @@
 <meta property="og:type" content="website">
 <script>
 (function () {
-  var l;
-  try {
-    var p = new URLSearchParams(location.search).get('lang');
-    l = (p === 'es' || p === 'en') ? p : localStorage.getItem('lang');
-  } catch (e) {}
-  if (l !== 'es' && l !== 'en') {
-    l = (navigator.language || 'es').toLowerCase().indexOf('es') === 0 ? 'es' : 'en';
-  }
-  document.documentElement.className = l;
-  document.documentElement.lang = l;
+var l;
+try {
+var p = new URLSearchParams(location.search).get('lang');
+l = (p === 'es' || p === 'en') ? p : localStorage.getItem('lang');
+} catch (e) {}
+if (l !== 'es' && l !== 'en') {
+l = (navigator.language || 'es').toLowerCase().indexOf('es') === 0 ? 'es' : 'en';
+}
+document.documentElement.className = l;
+document.documentElement.lang = l;
 })();
 </script>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
-    color: #222; line-height: 1.6; background: #fafafa;
-  }
-  .container { max-width: 760px; margin: 0 auto; padding: 60px 24px; }
-  .lang-switch { font-size: 13px; margin-bottom: 30px; }
-  header { margin-bottom: 60px; }
-  h1 { font-size: 32px; font-weight: 600; margin-bottom: 8px; }
-  .tagline { font-size: 18px; color: #555; margin-bottom: 20px; }
-  .contact-links a {
-    color: #222; text-decoration: none; margin-right: 20px;
-    font-size: 14px; border-bottom: 1px solid #ccc;
-  }
-  section { margin-bottom: 56px; }
-  h2 {
-    font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px;
-    color: #888; margin-bottom: 16px; font-weight: 600;
-  }
-  p { margin-bottom: 12px; }
-  ul { margin: 0 0 12px 20px; }
-  li { margin-bottom: 6px; }
-  .services-list { list-style: none; margin: 0; }
-  .services-list li { padding: 14px 0; border-bottom: 1px solid #e5e5e5; margin: 0; }
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-  .skill-tags span {
-    font-size: 13px; background: #eee; color: #444;
-    padding: 5px 12px; border-radius: 12px;
-  }
-  .case-study {
-    border: 1px solid #e5e5e5; border-radius: 8px;
-    padding: 28px; margin-bottom: 16px; background: white;
-  }
-  .case-study h3 { font-size: 20px; margin-bottom: 4px; }
-  .case-study .subtitle { font-size: 14px; color: #666; margin-bottom: 20px; }
-  .case-study .tag {
-    display: inline-block; font-size: 12px; color: #666;
-    background: #f0f0f0; padding: 3px 10px; border-radius: 12px;
-    margin-bottom: 10px;
-  }
-  .case-study.pending { opacity: 0.55; }
-  .stats-row { display: flex; gap: 24px; margin: 20px 0; flex-wrap: wrap; }
-  .stat { flex: 1; min-width: 140px; }
-  .stat .num { font-size: 24px; font-weight: 600; }
-  .stat .label { font-size: 13px; color: #666; }
-  .role-note {
-    background: #f7f7f7; border-left: 3px solid #ccc;
-    padding: 14px 16px; font-size: 14px; color: #444; margin: 20px 0;
-  }
-  h4 { font-size: 16px; margin: 24px 0 8px; }
-  details {
-    border: 1px solid #e5e5e5; border-radius: 6px;
-    padding: 12px 16px; margin-bottom: 10px; background: #fcfcfc;
-  }
-  details summary { font-weight: 500; cursor: pointer; font-size: 15px; }
-  details[open] summary { margin-bottom: 10px; }
-  details p, details li { font-size: 14px; color: #333; }
-  details p strong { color: #111; }
-  table { width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 12px; }
-  th { text-align: left; padding: 8px; border-bottom: 2px solid #ddd; font-weight: 600; }
-  td { padding: 8px; border-bottom: 1px solid #eee; vertical-align: top; }
-  .own-row { background: #f4f8f4; font-weight: 500; }
-  footer { font-size: 13px; color: #999; padding-top: 30px; border-top: 1px solid #e5e5e5; }
-
-  html.es [data-l="en"], html.en [data-l="es"] { display: none !important; }
-  .lang-switch button {
-    background: none; border: 0; font: inherit; font-size: 13px; color: #888;
-    cursor: pointer; padding: 4px 6px; margin-right: 4px;
-  }
-  .lang-switch button[aria-pressed="true"] { color: #222; font-weight: 600; }
-  .case-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-  .case-nav a {
-    font-size: 14px; color: #222; text-decoration: none;
-    border: 1px solid #ddd; border-radius: 16px; padding: 5px 14px; background: white;
-  }
-  .case-nav span { font-size: 14px; color: #999; padding: 5px 4px; }
-  .case-study { scroll-margin-top: 16px; }
-  .table-wrap { overflow-x: auto; margin-bottom: 12px; }
-  .table-wrap table { margin-bottom: 0; }
-  .table-wrap table.compact { min-width: 560px; }
-  a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid #222; outline-offset: 2px; }
-  @media (max-width: 600px) {
-    .container { padding: 36px 18px; }
-    .case-study { padding: 20px 16px; }
-    h1 { font-size: 28px; }
-  }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+color: #222; line-height: 1.6; background: #fafafa;
+}
+.container { max-width: 760px; margin: 0 auto; padding: 60px 24px; }
+.lang-switch { font-size: 13px; margin-bottom: 30px; }
+header { margin-bottom: 60px; }
+h1 { font-size: 32px; font-weight: 600; margin-bottom: 8px; }
+.tagline { font-size: 18px; color: #555; margin-bottom: 20px; }
+.contact-links a {
+color: #222; text-decoration: none; margin-right: 20px;
+font-size: 14px; border-bottom: 1px solid #ccc;
+}
+section { margin-bottom: 56px; }
+h2 {
+font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px;
+color: #888; margin-bottom: 16px; font-weight: 600;
+}
+p { margin-bottom: 12px; }
+ul { margin: 0 0 12px 20px; }
+li { margin-bottom: 6px; }
+.services-list { list-style: none; margin: 0; }
+.services-list li { padding: 14px 0; border-bottom: 1px solid #e5e5e5; margin: 0; }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.skill-tags span {
+font-size: 13px; background: #eee; color: #444;
+padding: 5px 12px; border-radius: 12px;
+}
+.case-study {
+border: 1px solid #e5e5e5; border-radius: 8px;
+padding: 28px; margin-bottom: 16px; background: white;
+}
+.case-study h3 { font-size: 20px; margin-bottom: 4px; }
+.case-study .subtitle { font-size: 14px; color: #666; margin-bottom: 20px; }
+.case-study .tag {
+display: inline-block; font-size: 12px; color: #666;
+background: #f0f0f0; padding: 3px 10px; border-radius: 12px;
+margin-bottom: 10px;
+}
+.case-study.pending { opacity: 0.55; }
+.stats-row { display: flex; gap: 24px; margin: 20px 0; flex-wrap: wrap; }
+.stat { flex: 1; min-width: 140px; }
+.stat .num { font-size: 24px; font-weight: 600; }
+.stat .label { font-size: 13px; color: #666; }
+.role-note {
+background: #f7f7f7; border-left: 3px solid #ccc;
+padding: 14px 16px; font-size: 14px; color: #444; margin: 20px 0;
+}
+h4 { font-size: 16px; margin: 24px 0 8px; }
+details {
+border: 1px solid #e5e5e5; border-radius: 6px;
+padding: 12px 16px; margin-bottom: 10px; background: #fcfcfc;
+}
+details summary { font-weight: 500; cursor: pointer; font-size: 15px; }
+details[open] summary { margin-bottom: 10px; }
+details p, details li { font-size: 14px; color: #333; }
+details p strong { color: #111; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 12px; }
+th { text-align: left; padding: 8px; border-bottom: 2px solid #ddd; font-weight: 600; }
+td { padding: 8px; border-bottom: 1px solid #eee; vertical-align: top; }
+.own-row { background: #f4f8f4; font-weight: 500; }
+footer { font-size: 13px; color: #999; padding-top: 30px; border-top: 1px solid #e5e5e5; }
+html.es [data-l="en"], html.en [data-l="es"] { display: none !important; }
+.lang-switch button {
+background: none; border: 0; font: inherit; font-size: 13px; color: #888;
+cursor: pointer; padding: 4px 6px; margin-right: 4px;
+}
+.lang-switch button[aria-pressed="true"] { color: #222; font-weight: 600; }
+.case-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.case-nav a {
+font-size: 14px; color: #222; text-decoration: none;
+border: 1px solid #ddd; border-radius: 16px; padding: 5px 14px; background: white;
+}
+.case-nav span { font-size: 14px; color: #999; padding: 5px 4px; }
+.case-study { scroll-margin-top: 16px; }
+.table-wrap { overflow-x: auto; margin-bottom: 12px; }
+.table-wrap table { margin-bottom: 0; }
+.table-wrap table.compact { min-width: 560px; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid #222; outline-offset: 2px; }
+@media (max-width: 600px) {
+.container { padding: 36px 18px; }
+.case-study { padding: 20px 16px; }
+h1 { font-size: 28px; }
+}
 </style>
 </head>
 <body>
-  <div class="container">
-    <div class="lang-switch">
-      <button type="button" data-set="en" aria-pressed="false">EN</button>
-      <button type="button" data-set="es" aria-pressed="true">ES</button>
-    </div>
+<div class="container">
+<div class="lang-switch">
+<button type="button" data-set="en" aria-pressed="false">EN</button>
+<button type="button" data-set="es" aria-pressed="true">ES</button>
+</div>
+<!-- ===================== ESPAÑOL ===================== -->
+<div data-l="es">
+<header>
+<h1>Hanna Sarfati</h1>
+<p class="tagline">Marketing digital para pequeños negocios — estrategia, contenido y resultados medibles</p>
+<div class="contact-links">
+<a href="mailto:hannasarfati24@hotmail.com">Email</a>
+</div>
+</header>
+<section>
+<h2>Sobre mí</h2>
+<p>Ayudo a negocios chicos a mejorar su presencia digital con estrategias de marketing basadas en datos. Combino formación en marketing digital con una mirada psicológica del comportamiento del consumidor para crear campañas que realmente conectan.</p>
+</section>
+<section>
+<h2>Certificación</h2>
+<p>Certificado Profesional de Marketing Digital y E-commerce de Google — completado.</p>
+<div class="skill-tags">
+<span>ROI / LTV</span>
+<span>A/B testing en Google Ads</span>
+<span>Analítica con GA4</span>
+<span>Visualización de datos</span>
+<span>Gestión de stakeholders</span>
+</div>
+</section>
+<section>
+<h2>Servicios</h2>
+<ul class="services-list">
+<li>Estrategia de redes sociales y contenido</li>
+<li>Auditoría y optimización de campañas de Ads</li>
+<li>Análisis de métricas y reportes de rendimiento</li>
+</ul>
+</section>
+<section>
+<h2>Casos de estudio</h2>
+<nav class="case-nav" aria-label="Casos de estudio">
+<a href="#go-nonna">Go Nonna</a>
+<a href="#justina-shoes">Justina Shoes</a>
+<span>E-commerce · próximamente</span>
+</nav>
+<div class="case-study" id="go-nonna">
+<span class="tag">Auditoría independiente · Gastronomía</span>
+<h3>Go Nonna</h3>
+<p class="subtitle">Cocina italiana y argentina · Long Island City, Queens, Nueva York</p>
+<div class="stats-row">
+<div class="stat"><div class="num">4,6 ★</div><div class="label">Mejor calificación entre sus competidores directos</div></div>
+<div class="stat"><div class="num">610</div><div class="label">Reseñas totales</div></div>
+<div class="stat"><div class="num">3,5×</div><div class="label">Más reseñas tiene el competidor que domina la zona</div></div>
+</div>
+<h4>Resumen ejecutivo</h4>
+<p>Go Nonna no tiene un problema de producto ni de experiencia: con 4,6 ★ sobre 610 reseñas iguala o supera en calificación a todos sus competidores directos de Long Island City. El problema es de visibilidad — compite contra locales con hasta 3,5 veces más reseñas y mucha más actividad digital.</p>
+<p>Identifiqué tres oportunidades prioritarias, todas ejecutables sin inversión publicitaria: corregir las categorías del perfil de Google, comunicar de forma sostenida el diferencial y las promociones que hoy se cuentan de manera puntual, y activar contenido orgánico apoyado en los propios clientes.</p>
+<div class="role-note">
+<strong>Contexto y alcance:</strong> trabajé como mesera en Go Nonna durante un período prolongado, lo que me dio visión directa del funcionamiento del local y del perfil de sus comensales. Este diagnóstico lo realicé de forma independiente, en paralelo a mi formación en marketing digital; no formó parte de mis tareas en el restaurante. No tuve acceso a cuentas internas — ni Meta Business Suite, ni Analytics, ni datos de ventas —, así que el análisis se basa exclusivamente en información pública y observable. El negocio no invierte en pauta por decisión del dueño, de modo que toda la estrategia propuesta es orgánica.
+</div>
+<h4>Arquetipo de cliente</h4>
+<ul>
+<li>Parejas, grupos de amigos y familias, con edad predominante entre 30 y 50 años.</li>
+<li>Mezcla de vecinos regulares del barrio y turistas; Long Island City tiene además fuerte presencia de comunidad asiática, reflejada en la clientela.</li>
+<li>Buscan comida casera, porciones generosas y trato personal — varias reseñas nombran al personal por su nombre.</li>
+<li>Valoran un ambiente íntimo y sin pretensiones, con buena relación cantidad-precio para el estándar de Nueva York.</li>
+<li>Fricciones que ellos mismos señalan: tiempos de espera en horarios pico y un local chico que conviene reservar con anticipación.</li>
+</ul>
+<h4>Análisis de competencia</h4>
+<div class="table-wrap"><table>
+<tr><th>Competidor</th><th>Rating</th><th>Reseñas</th><th>Observación</th></tr>
+<tr class="own-row"><td>Go Nonna</td><td>4,6</td><td>610</td><td>Mejor rating del grupo, volumen de reseñas medio.</td></tr>
+<tr><td>Maiella</td><td>4,4</td><td>2.109</td><td>Peor rating, 3,5× más reseñas. Domina la visibilidad de la zona.</td></tr>
+<tr><td>Osteria Brooklyn @ LIC</td><td>4,5</td><td>969</td><td>Ubicación sobre el agua como diferencial.</td></tr>
+<tr><td>Manetta's Ristorante</td><td>4,6</td><td>952</td><td>Mismo rating, 55% más reseñas. Clásico del barrio.</td></tr>
+<tr><td>Manducatis Rustica</td><td>4,5</td><td>588</td><td>Volumen similar; abre sólo de miércoles a sábado.</td></tr>
+<tr><td>mercato LIC</td><td>4,6</td><td>178</td><td>Comunica activamente su happy hour — compite directo en esa propuesta.</td></tr>
+</table></div>
+<p><strong>El hueco:</strong> todos los competidores compiten por "auténtico italiano". Ninguno ocupa el espacio italiano-argentino ni el ángulo de bodegón de barrio. Ahí está la propuesta de valor diferencial disponible.</p>
+<h4>Diagnóstico de embudo</h4>
+<div class="table-wrap"><table>
+<tr><th>Etapa</th><th>Estado</th><th>Evidencia</th></tr>
+<tr><td>Conocimiento</td><td>🔴 Falla</td><td>Rating igual o mejor que la competencia, pero con mucho menos volumen de reseñas y alcance social. Quien lo conoce lo valora; el problema es cuánta gente nueva llega a conocerlo.</td></tr>
+<tr><td>Consideración</td><td>🟡 Parcial</td><td>Las reseñas y el menú generan confianza, pero el diferencial italiano-argentino no se comunica y el happy hour sólo se anunció de forma puntual.</td></tr>
+<tr><td>Conversión</td><td>🟢 Sólida</td><td>Reserva y pedido online funcionan; horarios y ubicación claros.</td></tr>
+<tr><td>Fidelización</td><td>🟡 Desaprovechada</td><td>Alta satisfacción declarada sin ningún mecanismo para convertirla en contenido, recomendación o recompra.</td></tr>
+</table></div>
+<p><strong>Etapa crítica:</strong> conocimiento. Todo lo que ocurre después de que el cliente llega funciona bien; el cuello de botella está en cuánta gente nueva lo descubre.</p>
+<h4>Auditoría de presencia digital</h4>
+<details>
+<summary>Google Business Profile</summary>
+<p><strong>Estado —</strong> 4,6 ★ sobre 610 reseñas. Perfil completo y con horarios correctos, pero clasificado además con categorías que no corresponden ("servicio de envíos", "diner"). Se responden sobre todo las reseñas negativas.</p>
+<p><strong>Lectura —</strong> La reputación es el activo más fuerte del negocio. Las categorías erróneas diluyen la relevancia en búsquedas locales y su corrección no tiene costo.</p>
+</details>
+<details>
+<summary>Sitio web</summary>
+<p><strong>Estado —</strong> Carga rápido, diseño claro, título descriptivo. Reserva y pedido online funcionando. Las fotos de platos datan de 2019 y el happy hour no figura en ningún lugar.</p>
+<p><strong>Lectura —</strong> Base técnica sólida, sin necesidad de rehacer. El problema no es el camino de conversión sino qué se comunica: no hay motivos nuevos para elegirlo.</p>
+</details>
+<details>
+<summary>Instagram (@gononnalic)</summary>
+<p><strong>Estado —</strong> 1.416 seguidores y ~75 publicaciones acumuladas para un local abierto desde 2019. Predomina la foto de plato producida; sin uso de video corto. Los clientes etiquetan por cuenta propia y el local no lo reutiliza.</p>
+<p><strong>Lectura —</strong> Frecuencia muy por debajo del potencial. El formato de mayor alcance orgánico está sin usar y hay contenido gratuito de clientes desaprovechado.</p>
+</details>
+<details>
+<summary>Facebook y marca</summary>
+<p><strong>Facebook —</strong> Contenido duplicado de Instagram, con menos movimiento: esfuerzo dividido sin retorno proporcional.</p>
+<p><strong>Marca —</strong> Identidad clara y coherente entre local, sitio y redes: calidez, informalidad, estética de bodegón. La fusión italiano-argentina casi no se comunica. La marca no necesita redefinirse; necesita decirse.</p>
+</details>
+<!-- <h4>Prioridades</h4>
+<details>
+<summary>1. Categorías incorrectas en el perfil de Google</summary>
+<p><strong>Problema —</strong> El perfil está clasificado con categorías que no corresponden al negocio, lo que diluye su relevancia en las búsquedas locales que importan.</p>
+<p><strong>Evidencia —</strong> Además de restaurante italiano y argentino, figura como "servicio de envíos" y "diner". Aparte, el negocio se lista con dos direcciones válidas de un mismo edificio en esquina (44th Drive y 11th St) según la plataforma.</p>
+<p><strong>Etapa —</strong> Conocimiento</p>
+<p><strong>Propuesta —</strong> Depurar las categorías dejando sólo las correctas (restaurante italiano, argentino, familiar). Como acción menor, unificar una única dirección en todas las plataformas.</p>
+<p><strong>Métrica —</strong> Búsquedas mensuales que muestran el perfil y posición en el ranking local para "italian restaurant Long Island City".</p>
+</details>
+<details>
+<summary>2. El diferencial y las promociones se comunican de forma puntual</summary>
+<p><strong>Problema —</strong> El elemento más distintivo del negocio no se comunica, y sus promociones se anuncian una sola vez y desaparecen: quien evalúa dónde comer no encuentra motivos para elegirlo por encima de la competencia.</p>
+<p><strong>Evidencia —</strong> Ningún competidor relevado ofrece cocina italiana y argentina, pero la mayoría de los canales presentan a Go Nonna simplemente como "italiano". El happy hour se publicó como una imagen suelta en Instagram y Facebook, sin recurrencia, y no figura en el sitio ni en Google — mientras mercato LIC sí lo comunica de forma sostenida y aparece mencionado en sus reseñas.</p>
+<p><strong>Etapa —</strong> Consideración</p>
+<p><strong>Propuesta —</strong> Articular la propuesta italiano-argentina en la biografía de Instagram, la home del sitio y la descripción de Google. Convertir el happy hour en comunicación recurrente: publicación fija semanal, destacado permanente en Instagram, mención en el sitio y publicación de novedad en Google Business Profile.</p>
+<p><strong>Métrica —</strong> Clics al sitio y solicitudes de indicaciones desde Google Business Profile; consumo en la franja de happy hour antes y después.</p>
+</details>
+<details>
+<summary>3. Volumen de contenido social muy por debajo del potencial</summary>
+<p><strong>Problema —</strong> Con menos de cien publicaciones acumuladas, las redes no generan descubrimiento de clientes nuevos, pese a que el local produce material espontáneo todos los días.</p>
+<p><strong>Evidencia —</strong> ~75 publicaciones y 1.416 seguidores desde 2019, con formato dominante de foto producida y sin video corto. Los clientes etiquetan por cuenta propia sin que el local reutilice ese contenido.</p>
+<p><strong>Etapa —</strong> Conocimiento</p>
+<p><strong>Propuesta —</strong> Esquema de contenido de bajo esfuerzo: republicar en historias cada mención o etiqueta de clientes; dos videos cortos semanales sin edición profesional (pasta fresca, plato del día, cocina en movimiento); usar Facebook como espejo automático en vez de gestionarlo aparte.</p>
+<p><strong>Métrica —</strong> Alcance de cuentas no seguidoras y cantidad de menciones o etiquetas de clientes por mes.</p>
+</details>
+<h4>Medición y siguientes pasos</h4>
+<p>Antes de implementar habría que fijar una línea de base: reseñas totales y ritmo de reseñas nuevas, visualizaciones y clics del perfil de Google, alcance de cuentas no seguidoras en Instagram, y reservas y pedidos online mensuales. Plazo razonable de evaluación: 90 días.</p>
+<p>Quedaron identificadas y deliberadamente no priorizadas: actualizar las fotos del sitio (son de 2019), responder también las reseñas positivas, anticipar en el contenido los tiempos de espera en horarios pico, y evaluar una captación simple de correos en el local.</p>
+</div>
+<div class="case-study" id="justina-shoes">
+<span class="tag">Auditoría + benchmark competitivo · Calzado / E-commerce</span>
+<h3>Justina Shoes</h3>
+<p class="subtitle">Fabricante de calzado de mujer en cuero · Ramos Mejía, Buenos Aires · Venta mayorista y online a todo el país</p>
+<div class="stats-row">
+<div class="stat"><div class="num">123K</div><div class="label">Seguidores entre sus dos cuentas de Instagram</div></div>
+<div class="stat"><div class="num">0</div><div class="label">Reseñas visibles en todo el sitio</div></div>
+<div class="stat"><div class="num">1 de 4</div><div class="label">Única marca del benchmark sin envío gratis, y la de precio más alto</div></div>
+</div>
+<h4>Resumen ejecutivo</h4>
+<p>Justina Shoes vende poco online pese a tener lo que a la mayoría de las marcas le falta: fábrica propia, producto de cuero, más de 123.000 seguidores, cuenta verificada, equipo de marketing y pauta activa. El negocio lo atribuía a la economía y a la competencia de calzado sintético barato. Ese contexto es real, pero afecta a todo el rubro por igual y no habilita ninguna acción, así que el análisis se concentró en lo que sí depende de la marca.</p>
+<p>El problema no es de alcance sino de consideración y conversión. Todo lo que justifica el precio ya está escrito, pero aparece debajo del botón de compra; la marca afirma calidad sin mostrar ninguna prueba, ni una sola reseña; y la historia de fábrica, su activo más difícil de copiar, no aparece en ningún lado. Propuse tres prioridades ejecutables sin presupuesto adicional de medios, una reasignación de la pauta existente y un benchmark contra tres competidores del rubro.</p>
+<div class="role-note">
+<strong>Contexto y alcance:</strong> Justina Shoes es una marca familiar en la que participé en producción de contenido, campañas de fotos y análisis de estrategia. Esta auditoría la hice sobre información pública — sitio en móvil y escritorio, fichas de producto, Instagram, TikTok y Pinterest — más contexto aportado por el negocio. No tuve acceso a Analytics, a las cuentas publicitarias ni a datos de ventas: ningún dato fue estimado, y lo que es hipótesis está señalado como tal.
+</div>
+<h4>Por qué la confianza pesa tanto en este rubro</h4>
+<p>El calzado de cuero es una compra cara, poco frecuente y que no se puede probar antes. Con ingresos ajustados, la reacción más común no es pasarse a algo más barato sino postergar el reemplazo: el competidor real es la decisión de no comprar todavía. Por eso las señales de confianza son decisivas, y ahí está la falla principal.</p>
+<h4>Diagnóstico de embudo</h4>
+<div class="table-wrap"><table>
+<tr><th>Etapa</th><th>Estado</th><th>Evidencia</th></tr>
+<tr><td>Conocimiento</td><td>🟡 Sin verificar</td><td>123.000 seguidores, cuenta verificada, TikTok activo y pauta sostenida. Hay volumen; la calidad y actividad de esa audiencia queda por confirmar con accesos.</td></tr>
+<tr><td>Consideración</td><td>🔴 Falla</td><td>El argumento de valor está debajo del botón de compra, no hay historia de marca y no hay ninguna prueba externa de la calidad que se afirma.</td></tr>
+<tr><td>Conversión</td><td>🔴 Falla</td><td>Hasta cinco cifras de precio por producto, sin reseñas, sin devoluciones, plazos de entrega contradictorios y fichas inconsistentes.</td></tr>
+<tr><td>Fidelización</td><td>⚪ No evaluable</td><td>Newsletter activo y comunidad en redes, sin métricas para medir cuánto se aprovechan.</td></tr>
+</table></div>
+<p><strong>Etapas críticas:</strong> consideración y conversión. La clienta llega a la marca, pero lo primero que recibe es un precio sin justificación visible y sin respaldo.</p>
+<h4>Benchmark competitivo</h4>
+<p>Comparé a Justina con tres marcas argentinas de calzado de cuero de distinta escala, para separar los problemas del rubro de los propios. Resultado: varias carencias son específicas de Justina, y sus competidores ya las resolvieron.</p>
+<div class="table-wrap"><table>
+<tr><th>Marca</th><th>Perfil</th><th>Botas (precio de lista relevado)</th></tr>
+<tr class="own-row"><td>Justina Shoes</td><td>Fabricante, Ramos Mejía. Mayorista y minorista.</td><td>$240.000 a $290.000</td></tr>
+<tr><td>Aldana Calzados</td><td>Fabricante, Buenos Aires. Mayorista y minorista.</td><td>$50.000 a $118.857</td></tr>
+<tr><td>Artecueros</td><td>Fábrica familiar con 56 años de historia, Córdoba.</td><td>$160.000 a $230.000</td></tr>
+<tr><td>Briganti</td><td>Marca con locales físicos, Buenos Aires. Retail multicategoría.</td><td>$124.999 a $199.999</td></tr>
+</table></div>
+<div class="table-wrap"><table class="compact">
+<tr><th>Señal de confianza</th><th>Justina</th><th>Aldana</th><th>Artecueros</th><th>Briganti</th></tr>
+<tr><td>Envío gratis</td><td>No</td><td>Sí</td><td>Sí</td><td>Desde $149.999</td></tr>
+<tr><td>Reseñas visibles</td><td>No</td><td>No</td><td>Testimonios en la home</td><td>Conteo por producto</td></tr>
+<tr><td>Historia de marca</td><td>No</td><td>Mínima</td><td>Bloque en la home y página propia</td><td>Página institucional</td></tr>
+<tr><td>Material en el nombre o la URL</td><td>No</td><td>Sí</td><td>En la URL</td><td>En la URL</td></tr>
+<tr><td>Botón de arrepentimiento</td><td>No detectado</td><td>Sí</td><td>No detectado</td><td>Sí</td></tr>
+</table></div>
+<p><strong>El hueco:</strong> ninguna de las cuatro marcas comunica el costo por uso, es decir, cuánto sale un par de cuero por temporada frente a uno sintético que hay que reemplazar cada año. Es el argumento que responde a quien posterga la compra, y está libre.</p>
+<p>Además, cada competidor tiene una pieza de lo que hace falta: Artecueros la historia, Briganti la infraestructura de confianza, Aldana los nombres de producto buscables. Justina es la única que reúne fábrica con historia, producto de gama alta y una audiencia que ninguno de los otros tres se acerca a tener, y la única que no usa ninguno de esos activos en su sitio.</p>
+<h4>Hallazgos principales</h4>
+<details>
+<summary>La propuesta de valor está enterrada</summary>
+<p><strong>Evidencia —</strong> Por encima del botón de compra hay foto, nombre, cifras de precio y selector de talle: ni una palabra sobre material, fabricación ni durabilidad. El título de la home es "Tienda Online de Shoes Justina" y las metadescripciones de producto son la plantilla por defecto, idéntica en todo el catálogo.</p>
+<p><strong>Lectura —</strong> Quien decide en los primeros segundos, que en móvil es casi todo el mundo, solo ve el precio. No hace falta producir contenido nuevo: alcanza con subir el que ya existe y sumarle el relato de fábrica que falta.</p>
+</details>
+<details>
+<summary>La marca afirma calidad pero no la demuestra</summary>
+<p><strong>Evidencia —</strong> Sin reseñas ni valoraciones en la ficha, el listado ni la home. Sin testimonios. Dos fotos por producto sobre fondo neutro, sin imagen de uso ni referencia de escala. Sin contenido de taller ni de durabilidad. El contenido de producto que ya se hace en TikTok no llega a la ficha, que es donde se decide la compra.</p>
+<p><strong>Lectura —</strong> Una compra cara, que no se puede probar, con demora de fabricación y sin devolución se sostiene solo sobre confianza. Es el hallazgo con mayor potencial de retorno.</p>
+</details>
+<details>
+<summary>Cinco precios para un mismo par</summary>
+<p><strong>Evidencia —</strong> La ficha llega a mostrar precio de lista tachado, con descuento, sin impuestos, con transferencia y valor de la cuota. La barra superior repite un mensaje de promoción en todas las páginas. El 60% de descuento anunciado es real, pero vive en una sección aparte, mientras la categoría Botas muestra descuentos del 10% al 15%.</p>
+<p><strong>Lectura —</strong> La clienta tiene que hacer cuentas antes de poder evaluar el producto, y el espacio más visible del sitio habla de precio en vez de hablar de lo que diferencia a la marca.</p>
+</details>
+<details>
+<summary>Nombres de producto que nadie busca</summary>
+<p><strong>Evidencia —</strong> El catálogo usa nombres de fantasía como Meru, Eosia o Himalaya. Nadie busca "Bota Eosia" en Google: busca "botas de cuero caña alta". Como el nombre es también el título de la página y alimenta el feed de Shopping, el catálogo queda invisible en la búsqueda y degradado en la pauta.</p>
+<p><strong>Propuesta —</strong> Un formato compuesto que conserva la identidad de marca: "Bota Eosia — Bota de cuero caña alta 28 cm | Negro". Dos de los tres competidores ya incluyen el material en el nombre o en la URL.</p>
+</details>
+<details>
+<summary>Condiciones de compra que se contradicen</summary>
+<p><strong>Evidencia —</strong> La ficha promete despacho en 2 a 7 días hábiles; las preguntas frecuentes, entrega en 5 a 20. La ventana de 15 días para pedir un cambio solo aparece en las preguntas frecuentes. No se detectó el botón de arrepentimiento, que dos de los tres competidores sí tienen.</p>
+<p><strong>Lectura —</strong> La promesa que la clienta lee antes de pagar es la más optimista, y esa distancia se convierte en reclamos. El botón de arrepentimiento quedó señalado como riesgo a verificar con asesoramiento legal.</p>
+</details>
+<details>
+<summary>Audiencia grande, calidad sin verificar</summary>
+<p><strong>Hipótesis —</strong> 123.000 seguidores garantizan alcance potencial, no compradores activos. La dejé señalada como hipótesis a resolver primero, porque si esa audiencia está inactiva o mal calificada cambia la prioridad de toda la inversión.</p>
+<p><strong>Cómo se verifica —</strong> Alcance sobre seguidores, tasa de interacción, demografía real y proporción del tráfico al sitio que llega desde redes.</p>
+</details>
+<!-- 
+  <h4>Prioridades</h4>
+<details>
+<summary>1. Probar la calidad en vez de afirmarla</summary>
+<p><strong>Problema —</strong> En una compra cara, que no se puede probar y sin devolución, se le pide a la clienta que confíe únicamente en la palabra de la marca.</p>
+<p><strong>Evidencia —</strong> Cero reseñas y testimonios; dos fotos por producto, sin imagen de uso; nada de taller ni durabilidad en el sitio.</p>
+<p><strong>Etapa —</strong> Consideración y conversión</p>
+<p><strong>Propuesta —</strong> Pedido automático de reseña por email después de la entrega, con el conteo visible ya en el listado. Al menos una foto de uso y un video corto de calce por modelo, reutilizables en la ficha, en redes y en pauta. Contenido de taller, cuero, costuras y pares con años de uso, que convierte "es de cuero" en algo verificable.</p>
+<p><strong>Métrica —</strong> Reseñas acumuladas y calificación promedio; conversión y abandono de carrito mes contra mes; proporción de cambios por talle sobre pedidos totales.</p>
+</details>
+<details>
+<summary>2. Subir el argumento de valor y contar la historia de la fábrica</summary>
+<p><strong>Problema —</strong> Todo lo que justifica el precio está publicado, pero por debajo del punto donde la clienta decide. Y el activo más difícil de copiar, ser una fábrica con años de oficio, no aparece en ningún lado.</p>
+<p><strong>Evidencia —</strong> Ninguna mención al material ni a la fabricación arriba del botón de compra; home y metadescripciones genéricas; sin página de historia de marca.</p>
+<p><strong>Etapa —</strong> Consideración</p>
+<p><strong>Propuesta —</strong> Tres líneas fijas entre el nombre y el precio: material, fabricación propia y plazo de despacho. Una declaración de posicionamiento única, replicada en Instagram, la home y las categorías. Títulos de producto en formato compuesto. Una página de historia — años, taller, proceso y personas — enlazada desde la ficha. Y el argumento de costo por uso, que hoy nadie en el rubro ocupa.</p>
+<p><strong>Métrica —</strong> Impresiones, CTR orgánico y posición media en Search Console contra los 30 días previos; tiempo de interacción en la ficha. Como beneficio extra, los títulos nuevos mejoran la calidad del feed de Shopping y bajan el costo por clic de la pauta que ya existe.</p>
+</details>
+<details>
+<summary>3. Reducir la fricción de la compra</summary>
+<p><strong>Problema —</strong> Entre que la clienta se decide y paga se acumulan obstáculos evitables: precios que obligan a calcular, plazos que no coinciden y condiciones de cambio escondidas.</p>
+<p><strong>Evidencia —</strong> Hasta cinco cifras de precio; plazos de 2 a 7 días frente a 5 a 20; ventana de cambio ausente de la ficha; tabla de talles solo en algunas fichas.</p>
+<p><strong>Etapa —</strong> Conversión</p>
+<p><strong>Propuesta —</strong> Un único plazo de entrega realista, igual en la ficha, las preguntas frecuentes y el email de confirmación. La política de cambios en dos líneas junto al botón, con los 15 días a la vista. Tabla de talles unificada en la zona de decisión. El precio por transferencia como cifra destacada. La liquidación señalizada dentro del catálogo. Revisión legal de la política de devoluciones.</p>
+<p><strong>Métrica —</strong> Conversión y abandono de carrito mes contra mes; reclamos por demora; cambios sobre pedidos totales.</p>
+</details>
+<h4>Pauta: reasignar antes de aumentar</h4>
+<p>El negocio ya invierte en publicidad, así que la pregunta no era si invertir sino dónde. Sin acceso a las cuentas, propuse un marco de reasignación para validar con datos:</p>
+<div class="table-wrap"><table>
+<tr><th>Destino</th><th>Peso</th><th>Por qué</th></tr>
+<tr><td>Remarketing</td><td>40%</td><td>Lo más rentable y probablemente subutilizado. Listas por comportamiento — vio un producto, abandonó el carrito, ya compró — con 90 días de duración, porque en ticket alto la decisión tarda.</td></tr>
+<tr><td>Shopping / feed</td><td>35%</td><td>Captura demanda que ya existe, pero depende de los títulos del feed: primero hay que corregir los nombres de producto.</td></tr>
+<tr><td>Prospección fría</td><td>25%</td><td>Se reduce, no se elimina. Alimentar la etapa que ya funciona mientras las siguientes pierden clientas es el gasto menos eficiente.</td></tr>
+</table></div>
+<p><strong>Paso cero:</strong> verificar que las conversiones estén bien configuradas en GA4 y en el píxel de Meta. Y el orden importa: aumentar la inversión antes de corregir la ficha es pagar más tráfico hacia una página que no convierte.</p>
+<h4>Medición y siguientes pasos</h4>
+<p>Para la siguiente etapa pedí acceso a GA4 y Search Console, a la tienda, a Meta Business Suite, a las cuentas publicitarias y a la plataforma de email, más la proporción actual de cambios sobre pedidos. Con eso se fija la línea de base y se validan las hipótesis.</p>
+<p>Quedaron identificadas y deliberadamente fuera de las prioridades: evaluar envío gratis desde un monto mínimo, captar emails con un premio sorteado en lugar de un descuento general, sumar una garantía de fabricación acotada, crear una línea de cuidado del cuero como categoría de recompra, un programa de referidos y correcciones rápidas de URLs, botones de compartir y tableros de Pinterest.</p>
+</div>
+<div class="case-study pending">
+<span class="tag">E-commerce — próximamente</span>
+<h3>Marca de e-commerce</h3>
+<p>Análisis de métricas de Ads en desarrollo.</p>
+</div>
+</section>
+</div>
+<!-- ===================== ENGLISH ===================== -->
+<div data-l="en">
+<header>
+<h1>Hanna Sarfati</h1>
+<p class="tagline">Digital marketing for small businesses — strategy, content and measurable results</p>
+<div class="contact-links">
+<a href="mailto:hannasarfati24@hotmail.com">Email</a>
+</div>
+</header>
+<section>
+<h2>About me</h2>
+<p>I help small businesses improve their digital presence with data-driven marketing strategies. I combine digital marketing training with a psychological understanding of consumer behavior to create campaigns that truly connect.</p>
+</section>
+<section>
+<h2>Certification</h2>
+<p>Google Digital Marketing &amp; E-commerce Professional Certificate — completed.</p>
+<div class="skill-tags">
+<span>ROI / LTV</span>
+<span>A/B testing in Google Ads</span>
+<span>GA4 analytics</span>
+<span>Data visualization</span>
+<span>Stakeholder management</span>
+</div>
+</section>
+<section>
+<h2>Services</h2>
+<ul class="services-list">
+<li>Social media and content strategy</li>
+<li>Ad campaign audits and optimization</li>
+<li>Metrics analysis and performance reporting</li>
+</ul>
+</section>
+<section>
+<h2>Case studies</h2>
+<nav class="case-nav" aria-label="Case studies">
+<a href="#go-nonna-en">Go Nonna</a>
+<a href="#justina-shoes-en">Justina Shoes</a>
+<span>E-commerce · coming soon</span>
+</nav>
+<div class="case-study" id="go-nonna-en">
+<span class="tag">Independent audit · Restaurant</span>
+<h3>Go Nonna</h3>
+<p class="subtitle">Italian and Argentine cuisine · Long Island City, Queens, New York</p>
+<div class="stats-row">
+<div class="stat"><div class="num">4.6 ★</div><div class="label">Highest rating among its direct competitors</div></div>
+<div class="stat"><div class="num">610</div><div class="label">Total reviews</div></div>
+<div class="stat"><div class="num">3.5×</div><div class="label">More reviews held by the competitor that dominates the area</div></div>
+</div>
+<h4>Executive summary</h4>
+<p>Go Nonna doesn't have a product or experience problem: with 4.6 ★ across 610 reviews, it matches or beats every direct competitor in Long Island City. The problem is visibility — it competes against restaurants with up to 3.5 times more reviews and far more digital activity.</p>
+<p>I identified three priority opportunities, all executable without ad spend: fixing the Google profile categories, consistently communicating the differentiator and the promotions that are currently mentioned only once, and activating organic content driven by its own customers.</p>
+<div class="role-note">
+<strong>Context and scope:</strong> I worked as a server at Go Nonna for an extended period, which gave me direct insight into how the restaurant runs and who its guests are. I carried out this diagnosis independently, alongside my digital marketing training; it was not part of my duties at the restaurant. I had no access to internal accounts — no Meta Business Suite, Analytics or sales data — so the analysis relies entirely on public, observable information. The business doesn't run paid ads by the owner's choice, so the entire proposed strategy is organic.
+</div>
+<h4>Customer archetype</h4>
+<ul>
+<li>Couples, groups of friends and families, mostly aged 30 to 50.</li>
+<li>A mix of neighborhood regulars and tourists; Long Island City also has a strong Asian community, reflected in the clientele.</li>
+<li>They look for home-style food, generous portions and personal service — several reviews mention staff by name.</li>
+<li>They value an intimate, unpretentious atmosphere and good portion-to-price value by New York standards.</li>
+<li>Friction points they mention themselves: wait times at peak hours and a small space that's best booked ahead.</li>
+</ul>
+<h4>Competitive analysis</h4>
+<div class="table-wrap"><table>
+<tr><th>Competitor</th><th>Rating</th><th>Reviews</th><th>Note</th></tr>
+<tr class="own-row"><td>Go Nonna</td><td>4.6</td><td>610</td><td>Best rating in the group, mid-range review volume.</td></tr>
+<tr><td>Maiella</td><td>4.4</td><td>2,109</td><td>Lowest rating, 3.5× more reviews. Dominates local visibility.</td></tr>
+<tr><td>Osteria Brooklyn @ LIC</td><td>4.5</td><td>969</td><td>Waterfront location as its differentiator.</td></tr>
+<tr><td>Manetta's Ristorante</td><td>4.6</td><td>952</td><td>Same rating, 55% more reviews. A neighborhood classic.</td></tr>
+<tr><td>Manducatis Rustica</td><td>4.5</td><td>588</td><td>Similar volume; open only Wednesday to Saturday.</td></tr>
+<tr><td>mercato LIC</td><td>4.6</td><td>178</td><td>Actively promotes its happy hour — a direct competitor on that offer.</td></tr>
+</table></div>
+<p><strong>The gap:</strong> every competitor fights over "authentic Italian". None of them owns the Italian-Argentine space or the cozy neighborhood-bodegón angle. That's the available differentiating value proposition.</p>
+<h4>Funnel diagnosis</h4>
+<div class="table-wrap"><table>
+<tr><th>Stage</th><th>Status</th><th>Evidence</th></tr>
+<tr><td>Awareness</td><td>🔴 Failing</td><td>Rating equal to or better than competitors, but far fewer reviews and much less social reach. People who know it love it; the problem is how many new people discover it.</td></tr>
+<tr><td>Consideration</td><td>🟡 Partial</td><td>Reviews and the menu build trust, but the Italian-Argentine differentiator isn't communicated and the happy hour was announced only once.</td></tr>
+<tr><td>Conversion</td><td>🟢 Strong</td><td>Online reservations and ordering work; hours and location are clear.</td></tr>
+<tr><td>Retention</td><td>🟡 Underused</td><td>High reported satisfaction with no mechanism to turn it into content, referrals or repeat visits.</td></tr>
+</table></div>
+<p><strong>Critical stage:</strong> awareness. Everything that happens once a guest arrives works well; the bottleneck is how many new people discover the restaurant.</p>
+<h4>Digital presence audit</h4>
+<details>
+<summary>Google Business Profile</summary>
+<p><strong>Status —</strong> 4.6 ★ across 610 reviews. Complete profile with correct hours, but also listed under categories that don't apply ("delivery service", "diner"). Mostly negative reviews get replies.</p>
+<p><strong>Takeaway —</strong> Reputation is the business's strongest asset. The wrong categories dilute relevance in local search, and fixing them costs nothing.</p>
+</details>
+<details>
+<summary>Website</summary>
+<p><strong>Status —</strong> Loads fast, clean design, descriptive title. Online reservations and ordering work. Dish photos date from 2019 and the happy hour isn't mentioned anywhere.</p>
+<p><strong>Takeaway —</strong> A solid technical base that doesn't need rebuilding. The issue isn't the conversion path but the message: there are no new reasons to choose it.</p>
+</details>
+<details>
+<summary>Instagram (@gononnalic)</summary>
+<p><strong>Status —</strong> 1,416 followers and about 75 posts in total for a restaurant open since 2019. Mostly styled dish photos; no short-form video. Customers tag the restaurant on their own and that content isn't reused.</p>
+<p><strong>Takeaway —</strong> Posting frequency is far below its potential. The format with the highest organic reach is unused, and free customer content goes to waste.</p>
+</details>
+<details>
+<summary>Facebook and brand</summary>
+<p><strong>Facebook —</strong> Content duplicated from Instagram, with less activity: split effort without a proportional return.</p>
+<p><strong>Brand —</strong> A clear, consistent identity across the restaurant, website and social media: warmth, informality, a cozy bodegón feel. The Italian-Argentine fusion is barely communicated. The brand doesn't need redefining; it needs to be said.</p>
+</details>
+<!-- <h4>Priorities</h4>
+<details>
+<summary>1. Wrong categories on the Google profile</summary>
+<p><strong>Problem —</strong> The profile is listed under categories that don't match the business, diluting its relevance in the local searches that matter.</p>
+<p><strong>Evidence —</strong> Besides Italian and Argentine restaurant, it appears as "delivery service" and "diner". Separately, the business is listed under two valid addresses of the same corner building (44th Drive and 11th St), depending on the platform.</p>
+<p><strong>Stage —</strong> Awareness</p>
+<p><strong>Proposal —</strong> Clean up the categories, keeping only the right ones (Italian, Argentine, family restaurant). As a minor fix, use a single address across all platforms.</p>
+<p><strong>Metric —</strong> Monthly searches showing the profile and local ranking position for "italian restaurant Long Island City".</p>
+</details>
+<details>
+<summary>2. The differentiator and promotions are communicated only once</summary>
+<p><strong>Problem —</strong> The most distinctive thing about the business isn't communicated, and its promotions are announced once and disappear: people deciding where to eat find no reason to choose it over the competition.</p>
+<p><strong>Evidence —</strong> None of the competitors reviewed offers Italian and Argentine cuisine, yet most channels present Go Nonna simply as "Italian". The happy hour was posted as a single image on Instagram and Facebook, with no follow-up, and doesn't appear on the website or Google — while mercato LIC promotes it consistently and gets mentioned for it in reviews.</p>
+<p><strong>Stage —</strong> Consideration</p>
+<p><strong>Proposal —</strong> State the Italian-Argentine proposition in the Instagram bio, the website homepage and the Google description. Turn the happy hour into recurring communication: a fixed weekly post, a permanent Instagram highlight, a mention on the website and an update post on Google Business Profile.</p>
+<p><strong>Metric —</strong> Website clicks and direction requests from Google Business Profile; happy-hour sales before and after.</p>
+</details>
+<details>
+<summary>3. Social content volume far below its potential</summary>
+<p><strong>Problem —</strong> With fewer than a hundred posts in total, social media doesn't bring in new customers, even though the restaurant produces spontaneous material every day.</p>
+<p><strong>Evidence —</strong> About 75 posts and 1,416 followers since 2019, mostly styled photos and no short-form video. Customers tag the restaurant on their own and it doesn't reuse that content.</p>
+<p><strong>Stage —</strong> Awareness</p>
+<p><strong>Proposal —</strong> A low-effort content plan: reshare every customer mention or tag in stories; two short, unpolished videos a week (fresh pasta, dish of the day, the kitchen in action); use Facebook as an automatic mirror instead of managing it separately.</p>
+<p><strong>Metric —</strong> Reach among non-followers and number of customer mentions or tags per month.</p>
+</details>
+<h4>Measurement and next steps</h4>
+<p>Before implementing, a baseline should be set: total reviews and pace of new reviews, Google profile views and clicks, Instagram reach among non-followers, and monthly online reservations and orders. A reasonable evaluation window: 90 days.</p>
+<p>Identified and deliberately not prioritized: updating the website photos (from 2019), replying to positive reviews too, setting expectations about peak-hour wait times in content, and considering a simple in-store email sign-up.</p>
+</div>
+<div class="case-study" id="justina-shoes-en">
+<span class="tag">Audit + competitive benchmark · Footwear / E-commerce</span>
+<h3>Justina Shoes</h3>
+<p class="subtitle">Women's leather footwear manufacturer · Ramos Mejía, Buenos Aires, Argentina · Wholesale and nationwide online sales</p>
+<div class="stats-row">
+<div class="stat"><div class="num">123K</div><div class="label">Followers across its two Instagram accounts</div></div>
+<div class="stat"><div class="num">0</div><div class="label">Customer reviews visible anywhere on the site</div></div>
+<div class="stat"><div class="num">1 of 4</div><div class="label">Only brand in the benchmark without free shipping, and the most expensive one</div></div>
+</div>
+<h4>Executive summary</h4>
+<p>Justina Shoes sells little online despite having what most brands lack: its own factory, a leather product, over 123,000 followers, a verified account, a marketing team and ongoing paid ads. The business blamed the economy and competition from cheap synthetic shoes. That context is real, but it affects the whole industry equally and doesn't lead to any action, so the analysis focused on what the brand can actually control.</p>
+<p>The problem isn't reach, it's consideration and conversion. Everything that justifies the price is already written, but it sits below the buy button; the brand claims quality without showing any proof, not a single review; and its factory story, the hardest asset to copy, appears nowhere. I proposed three priorities that require no additional media budget, a reallocation of the existing ad spend and a benchmark against three competitors.</p>
+<div class="role-note">
+<strong>Context and scope:</strong> Justina Shoes is a family brand where I took part in content production, photo campaigns and strategy analysis. I built this audit on public information — the site on mobile and desktop, product pages, Instagram, TikTok and Pinterest — plus context provided by the business. I had no access to Analytics, ad accounts or sales data: nothing was estimated, and anything that is a hypothesis is labeled as such.
+</div>
+<h4>Why trust matters so much here</h4>
+<p>Leather shoes are an expensive, infrequent purchase that can't be tried on beforehand. When budgets are tight, the most common reaction isn't switching to something cheaper but postponing the replacement: the real competitor is the decision not to buy yet. That makes trust signals decisive, and that is exactly where the main gap is.</p>
+<h4>Funnel diagnosis</h4>
+<div class="table-wrap"><table>
+<tr><th>Stage</th><th>Status</th><th>Evidence</th></tr>
+<tr><td>Awareness</td><td>🟡 Unverified</td><td>123,000 followers, verified account, active TikTok and ongoing ads. The volume is there; the quality and activity of that audience still needs to be confirmed with access.</td></tr>
+<tr><td>Consideration</td><td>🔴 Failing</td><td>The value argument sits below the buy button, there's no brand story and no outside proof of the quality the brand claims.</td></tr>
+<tr><td>Conversion</td><td>🔴 Failing</td><td>Up to five price figures per product, no reviews, no returns, contradictory delivery times and inconsistent product pages.</td></tr>
+<tr><td>Retention</td><td>⚪ Not assessable</td><td>Active newsletter and social community, with no metrics to measure how well they're used.</td></tr>
+</table></div>
+<p><strong>Critical stages:</strong> consideration and conversion. Shoppers reach the brand, but the first thing they get is a price with no visible justification and nothing to back it up.</p>
+<h4>Competitive benchmark</h4>
+<p>I compared Justina with three Argentine leather footwear brands of different sizes, to separate industry-wide problems from the brand's own. The result: several gaps are specific to Justina, and its competitors have already solved them.</p>
+<div class="table-wrap"><table>
+<tr><th>Brand</th><th>Profile</th><th>Boots (list prices observed, ARS)</th></tr>
+<tr class="own-row"><td>Justina Shoes</td><td>Manufacturer, Ramos Mejía. Wholesale and retail.</td><td>$240,000 to $290,000</td></tr>
+<tr><td>Aldana Calzados</td><td>Manufacturer, Buenos Aires. Wholesale and retail.</td><td>$50,000 to $118,857</td></tr>
+<tr><td>Artecueros</td><td>Family factory with 56 years of history, Córdoba.</td><td>$160,000 to $230,000</td></tr>
+<tr><td>Briganti</td><td>Brand with physical stores, Buenos Aires. Multi-category retail.</td><td>$124,999 to $199,999</td></tr>
+</table></div>
+<div class="table-wrap"><table class="compact">
+<tr><th>Trust signal</th><th>Justina</th><th>Aldana</th><th>Artecueros</th><th>Briganti</th></tr>
+<tr><td>Free shipping</td><td>No</td><td>Yes</td><td>Yes</td><td>Above $149,999</td></tr>
+<tr><td>Visible reviews</td><td>No</td><td>No</td><td>Testimonials on homepage</td><td>Count per product</td></tr>
+<tr><td>Brand story</td><td>No</td><td>Minimal</td><td>Homepage block and dedicated page</td><td>About page</td></tr>
+<tr><td>Material in product name or URL</td><td>No</td><td>Yes</td><td>In the URL</td><td>In the URL</td></tr>
+<tr><td>Legally required "cancel purchase" button</td><td>Not found</td><td>Yes</td><td>Not found</td><td>Yes</td></tr>
+</table></div>
+<p><strong>The gap:</strong> none of the four brands talks about cost per wear — what a leather pair costs per season compared with a synthetic pair that needs replacing every year. It's the argument that answers shoppers who are postponing the purchase, and nobody owns it.</p>
+<p>Each competitor also has one piece of what's needed: Artecueros has the story, Briganti the trust infrastructure, Aldana searchable product names. Justina is the only one that combines a factory with history, a premium product and an audience none of the other three comes close to, and the only one that uses none of those assets on its site.</p>
+<h4>Key findings</h4>
+<details>
+<summary>The value proposition is buried</summary>
+<p><strong>Evidence —</strong> Above the buy button there's a photo, the name, price figures and a size selector: not a word about material, manufacturing or durability. The homepage title is "Tienda Online de Shoes Justina" (Shoes Justina Online Store) and product meta descriptions are the platform's default template, identical across the catalog.</p>
+<p><strong>Takeaway —</strong> Anyone deciding in the first few seconds, which on mobile is almost everyone, only sees the price. No new content is needed: it's enough to move up what already exists and add the missing factory story.</p>
+</details>
+<details>
+<summary>The brand claims quality but never proves it</summary>
+<p><strong>Evidence —</strong> No reviews or ratings on product pages, listings or the homepage. No testimonials. Two photos per product on a plain background, with no on-foot shot or sense of scale. No workshop or durability content. The product content already made for TikTok never reaches the product page, where the purchase is decided.</p>
+<p><strong>Takeaway —</strong> An expensive purchase that can't be tried on, with production lead times and no returns, rests entirely on trust. This is the finding with the highest potential return.</p>
+</details>
+<details>
+<summary>Five prices for the same pair</summary>
+<p><strong>Evidence —</strong> A product page can show a crossed-out list price, a discounted price, a price before taxes, a bank-transfer price and an installment amount. The top bar repeats a promotional message on every page. The advertised 60% discount is real, but it lives in a separate section, while the Boots category shows 10% to 15% off.</p>
+<p><strong>Takeaway —</strong> Shoppers have to do math before they can evaluate the product, and the most visible space on the site talks about price instead of what makes the brand different.</p>
+</details>
+<details>
+<summary>Product names nobody searches for</summary>
+<p><strong>Evidence —</strong> The catalog uses invented names like Meru, Eosia or Himalaya. Nobody googles "Eosia boot"; they search "tall leather boots". Since the name is also the page title and feeds the Shopping feed, the catalog is invisible in search and weaker in paid ads.</p>
+<p><strong>Proposal —</strong> A compound format that keeps the brand identity: "Eosia Boot — Tall leather boot, 28 cm shaft | Black". Two of the three competitors already include the material in the name or URL.</p>
+</details>
+<details>
+<summary>Purchase terms that contradict each other</summary>
+<p><strong>Evidence —</strong> The product page promises dispatch in 2 to 7 business days; the FAQ says delivery takes 5 to 20. The 15-day window to request an exchange only appears in the FAQ. The "cancel purchase" button that Argentine consumer law requires for online stores wasn't found, while two of the three competitors have it.</p>
+<p><strong>Takeaway —</strong> The promise shoppers read before paying is the most optimistic one, and that gap turns into complaints. The missing button was flagged as a risk to review with legal counsel.</p>
+</details>
+<details>
+<summary>Large audience, unverified quality</summary>
+<p><strong>Hypothesis —</strong> 123,000 followers guarantee potential reach, not active buyers. I flagged this as the first hypothesis to test, because if that audience is inactive or poorly targeted, the priority of the entire investment changes.</p>
+<p><strong>How to verify —</strong> Reach relative to followers, engagement rate, actual demographics and the share of site traffic coming from social media.</p>
+</details>
+<!-- 
+<h4>Priorities</h4>
+<details>
+<summary>1. Prove quality instead of claiming it</summary>
+<p><strong>Problem —</strong> In an expensive purchase that can't be tried on and can't be returned, shoppers are asked to rely solely on the brand's word.</p>
+<p><strong>Evidence —</strong> Zero reviews and testimonials; two photos per product with no on-foot shot; nothing about the workshop or durability on the site.</p>
+<p><strong>Stage —</strong> Consideration and conversion</p>
+<p><strong>Proposal —</strong> Automatic post-delivery review requests by email, with the review count shown right on the listing page. At least one on-foot photo and a short fit video per model, reusable on product pages, social media and ads. Workshop, leather, stitching and years-old pairs content that turns "it's leather" into something shoppers can verify.</p>
+<p><strong>Metric —</strong> Total reviews and average rating; conversion and cart abandonment month over month; size-related exchanges as a share of total orders.</p>
+</details>
+<details>
+<summary>2. Move the value argument up and tell the factory story</summary>
+<p><strong>Problem —</strong> Everything that justifies the price is published, but below the point where shoppers decide. And the hardest asset to copy, being a factory with years of craft, appears nowhere.</p>
+<p><strong>Evidence —</strong> No mention of material or manufacturing above the buy button; generic homepage and meta descriptions; no brand story page.</p>
+<p><strong>Stage —</strong> Consideration</p>
+<p><strong>Proposal —</strong> Three fixed lines between the product name and the price: material, in-house manufacturing and dispatch time. A single positioning statement, repeated on Instagram, the homepage and category pages. Product titles in the compound format. A brand story page — years, workshop, process and people — linked from product pages. And the cost-per-wear argument, which nobody in the industry owns today.</p>
+<p><strong>Metric —</strong> Impressions, organic CTR and average position in Search Console versus the previous 30 days; engagement time on product pages. As a bonus, the new titles improve Shopping feed quality and lower cost per click on existing ads.</p>
+</details>
+<details>
+<summary>3. Reduce purchase friction</summary>
+<p><strong>Problem —</strong> Between deciding and paying, shoppers hit avoidable obstacles: prices that require math, timelines that don't match and hidden exchange terms.</p>
+<p><strong>Evidence —</strong> Up to five price figures; 2 to 7 days versus 5 to 20; exchange window missing from product pages; size chart only on some products.</p>
+<p><strong>Stage —</strong> Conversion</p>
+<p><strong>Proposal —</strong> One realistic delivery time, the same on product pages, the FAQ and the confirmation email. The exchange policy in two lines next to the buy button, with the 15 days visible. A consistent size chart in the decision area. The bank-transfer price as the highlighted figure. Clearance items flagged within the regular catalog. A legal review of the returns policy.</p>
+<p><strong>Metric —</strong> Conversion and cart abandonment month over month; delay-related complaints; exchanges as a share of total orders.</p>
+</details>
+<h4>Ad spend: reallocate before increasing</h4>
+<p>The business already runs ads, so the question wasn't whether to invest but where. Without account access, I proposed a reallocation framework to validate with data:</p>
+<div class="table-wrap"><table>
+<tr><th>Channel</th><th>Share</th><th>Why</th></tr>
+<tr><td>Remarketing</td><td>40%</td><td>The most profitable option and likely underused. Behavior-based lists — viewed a product, abandoned cart, already bought — kept for 90 days, because high-ticket decisions take time.</td></tr>
+<tr><td>Shopping / feed</td><td>35%</td><td>Captures existing demand, but depends on feed titles: product names need fixing first.</td></tr>
+<tr><td>Cold prospecting</td><td>25%</td><td>Reduced, not eliminated. Feeding the stage that already works while later stages lose shoppers is the least efficient spend.</td></tr>
+</table></div>
+<p><strong>Step zero:</strong> confirm conversions are set up correctly in GA4 and the Meta pixel. And order matters: increasing spend before fixing product pages means paying for more traffic to a page that doesn't convert.</p>
+<h4>Measurement and next steps</h4>
+<p>For the next phase I requested access to GA4 and Search Console, the store, Meta Business Suite, the ad accounts and the email platform, plus the current exchange rate over total orders. That sets the baseline and lets the hypotheses be tested.</p>
+<p>Identified and deliberately left out of the priorities: testing free shipping above a minimum order, collecting emails with a prize draw instead of a blanket discount, adding a limited manufacturing warranty, launching a leather-care line as a repeat-purchase category, a referral program, and quick fixes to URLs, share buttons and Pinterest boards.</p>
+</div>
+<div class="case-study pending">
+<span class="tag">E-commerce — coming soon</span>
+<h3>E-commerce brand</h3>
+<p>Ad metrics analysis in progress.</p>
+</div>
+</section>
+</div>
+<footer>
+<p>Hanna Sarfati · Buenos Aires · 2026</p>
+</footer>
+</div>
+<script>
+var titles = { es: 'Hanna Sarfati — Marketing digital', en: 'Hanna Sarfati — Digital marketing' };
+function setLang(l) {
+document.documentElement.className = l;
+document.documentElement.lang = l;
+document.title = titles[l];
+document.querySelectorAll('.lang-switch button').forEach(function (b) {
+b.setAttribute('aria-pressed', b.dataset.set === l ? 'true' : 'false');
+});
+try { localStorage.setItem('lang', l); } catch (e) {}
+try { history.replaceState(null, '', '?lang=' + l + location.hash); } catch (e) {}
+}
+document.querySelectorAll('.lang-switch button').forEach(function (b) {
+b.addEventListener('click', function () { setLang(b.dataset.set); });
+});
+setLang(document.documentElement.className);
+</script>
+</body>
+</html>
+<!-- FIN PARTE 5 DE 5 -->
 
-    <!-- ===================== ESPAÑOL ===================== -->
-    <div data-l="es">
-    <header>
-      <h1>Hanna Sarfati</h1>
-      <p class="tagline">Marketing digital para pequeños negocios — estrategia, contenido y resultados medibles</p>
-      <div class="contact-links">
-        <a href="mailto:hannasarfati24@hotmail.com">Email</a>
-      </div>
-    </header>
+ 
 
-    <section>
-      <h2>Sobre mí</h2>
-      <p>Ayudo a negocios chicos a mejorar su presencia digital con estrategias de marketing basadas en datos. Combino formación en marketing digital con una mirada psicológica del comportamiento del consumidor para crear campañas que realmente conectan.</p>
-    </section>
-
-    <section>
-      <h2>Certificación</h2>
-      <p>Certificado Profesional de Marketing Digital y E-commerce de Google — completado.</p>
-      <div class="skill-tags">
-        <span>ROI / LTV</span>
-        <span>A/B testing en Google Ads</span>
-        <span>Analítica con GA4</span>
-        <span>Visualización de datos</span>
-        <span>Gestión de stakeholders</span>
-      </div>
-    </section>
-
-    <section>
-      <h2>Servicios</h2>
-      <ul class="services-list">
-        <li>Estrategia de redes sociales y contenido</li>
-        <li>Auditoría y optimización de campañas de Ads</li>
-        <li>Análisis de métricas y reportes de rendimiento</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Casos de estudio</h2>
-      <nav class="case-nav" aria-label="Casos de estudio">
-        <a href="#go-nonna">Go Nonna</a>
-        <a href="#justina-shoes">Justina Shoes</a>
-        <span>E-commerce · próximamente</span>
-      </nav>
-
-      <div class="case-study" id="go-nonna">
-        <span class="tag">Auditoría independiente · Gastronomía</span>
-        <h3>Go Nonna</h3>
-        <p class="subtitle">Cocina italiana y argentina · Long Island City, Queens, Nueva York</p>
-
-        <div class="stats-row">
-          <div class="stat"><div class="num">4,6 ★</div><div class="label">Mejor calificación entre sus competidores directos</div></div>
-          <div class="stat"><div class="num">610</div><div class="label">Reseñas totales</div></div>
-          <div class="stat"><div class="num">3,5×</div><div class="label">Más reseñas tiene el competidor que domina la zona</div></div>
-        </div>
-
-        <h4>Resumen ejecutivo</h4>
-        <p>Go Nonna no tiene un problema de producto ni de experiencia: con 4,6 ★ sobre 610 reseñas iguala o supera en calificación a todos sus competidores directos de Long Island City. El problema es de visibilidad — compite contra locales con hasta 3,5 veces más reseñas y mucha más actividad digital.</p>
-        <p>Identifiqué tres oportunidades prioritarias, todas ejecutables sin inversión publicitaria: corregir las categorías del perfil de Google, comunicar de forma sostenida el diferencial y las promociones que hoy se cuentan de manera puntual, y activar contenido orgánico apoyado en los propios clientes.</p>
-
-        <div class="role-note">
-          <strong>Contexto y alcance:</strong> trabajé como mesera en Go Nonna durante un período prolongado, lo que me dio visión directa del funcionamiento del local y del perfil de sus comensales. Este diagnóstico lo realicé de forma independiente, en paralelo a mi formación en marketing digital; no formó parte de mis tareas en el restaurante. No tuve acceso a cuentas internas — ni Meta Business Suite, ni Analytics, ni datos de ventas —, así que el análisis se basa exclusivamente en información pública y observable. El negocio no invierte en pauta por decisión del dueño, de modo que toda la estrategia propuesta es orgánica.
-        </div>
-
-        <h4>Arquetipo de cliente</h4>
-        <ul>
-          <li>Parejas, grupos de amigos y familias, con edad predominante entre 30 y 50 años.</li>
-          <li>Mezcla de vecinos regulares del barrio y turistas; Long Island City tiene además fuerte presencia de comunidad asiática, reflejada en la clientela.</li>
-          <li>Buscan comida casera, porciones generosas y trato personal — varias reseñas nombran al personal por su nombre.</li>
-          <li>Valoran un ambiente íntimo y sin pretensiones, con buena relación cantidad-precio para el estándar de Nueva York.</li>
-          <li>Fricciones que ellos mismos señalan: tiempos de espera en horarios pico y un local chico que conviene reservar con anticipación.</li>
-        </ul>
-
-        <h4>Análisis de competencia</h4>
-        <div class="table-wrap"><table>
-          <tr><th>Competidor</th><th>Rating</th><th>Reseñas</th><th>Observación</th></tr>
-          <tr class="own-row"><td>Go Nonna</td><td>4,6</td><td>610</td><td>Mejor rating del grupo, volumen de reseñas medio.</td></tr>
-          <tr><td>Maiella</td><td>4,4</td><td>2.109</td><td>Peor rating, 3,5× más reseñas. Domina la visibilidad de la zona.</td></tr>
-          <tr><td>Osteria Brooklyn @ LIC</td><td>4,5</td><td>969</td><td>Ubicación sobre el agua como diferencial.</td></tr>
-          <tr><td>Manetta's Ristorante</td><td>4,6</td><td>952</td><td>Mismo rating, 55% más reseñas. Clásico del barrio.</td></tr>
-          <tr><td>Manducatis Rustica</td><td>4,5</td><td>588</td><td>Volumen similar; abre sólo de miércoles a sábado.</td></tr>
-          <tr><td>mercato LIC</td><td>4,6</td><td>178</td><td>Comunica activamente su happy hour — compite directo en esa propuesta.</td></tr>
-        </table></div>
-        <p><strong>El hueco:</strong> todos los competidores compiten por "auténtico italiano". Ninguno ocupa el espacio italiano-argentino ni el ángulo de bodegón de barrio. Ahí está la propuesta de valor diferencial disponible.</p>
-
-        <h4>Diagnóstico de embudo</h4>
-        <div class="table-wrap"><table>
-          <tr><th>Etapa</th><th>Estado</th><th>Evidencia</th></tr>
-          <tr><td>Conocimiento</td><td>🔴 Falla</td><td>Rating igual o mejor que la competencia, pero con mucho menos volumen de reseñas y alcance social. Quien lo conoce lo valora; el problema es cuánta gente nueva llega a conocerlo.</td></tr>
-          <tr><td>Consideración</td><td>🟡 Parcial</td><td>Las reseñas y el menú generan confianza, pero el diferencial italiano-argentino no se comunica y el happy hour sólo se anunció de forma puntual.</td></tr>
-          <tr><td>Conversión</td><td>🟢 Sólida</td><td>Reserva y pedido online funcionan; horarios y ubicación claros.</td></tr>
-          <tr><td>Fidelización</td><td>🟡 Desaprovechada</td><td>Alta satisfacción declarada sin ningún mecanismo para convertirla en contenido, recomendación o recompra.</td></tr>
-        </table></div>
-        <p><strong>Etapa crítica:</strong> conocimiento. Todo lo que ocurre después de que el cliente llega funciona bien; el cuello de botella está en cuánta gente nueva lo descubre.</p>
-
-        <h4>Auditoría de presencia digital</h4>
-        <details>
-          <summary>Google Business Profile</summary>
-          <p><strong>Estado —</strong> 4,6 ★ sobre 610 reseñas. Perfil completo y con horarios correctos, pero clasificado además con categorías que no corresponden ("servicio de envíos", "diner"). Se responden sobre todo las reseñas negativas.</p>
-          <p><strong>Lectura —</strong> La reputación es el activo más fuerte del negocio. Las categorías erróneas diluyen la relevancia en búsquedas locales y su corrección no tiene costo.</p>
-        </details>
-        <details>
-          <summary>Sitio web</summary>
-          <p><strong>Estado —</strong> Carga rápido, diseño claro, título descriptivo. Reserva y pedido online funcionando. Las fotos de platos datan de 2019 y el happy hour no figura en ningún lugar.</p>
-          <p><strong>Lectura —</strong> Base técnica sólida, sin necesidad de rehacer. El problema no es el camino de conversión sino qué se comunica: no hay motivos nuevos para elegirlo.</p>
-        </details>
-        <details>
-          <summary>Instagram (@gononnalic)</summary>
-          <p><strong>Estado —</strong> 1.416 seguidores y ~75 publicaciones acumuladas para un local abierto desde 2019. Predomina la foto de plato producida; sin uso de video corto. Los clientes etiquetan por cuenta propia y el local no lo reutiliza.</p>
-          <p><strong>Lectura —</strong> Frecuencia muy por debajo del potencial. El formato de mayor alcance orgánico está sin usar y hay contenido gratuito de clientes desaprovechado.</p>
-        </details>
-        <details>
-          <summary>Facebook y marca</summary>
-          <p><strong>Facebook —</strong> Contenido duplicado de Instagram, con menos movimiento: esfuerzo dividido sin retorno proporcional.</p>
-          <p><strong>Marca —</strong> Identidad clara y coherente entre local, sitio y redes: calidez, informalidad, estética de bodegón. La fusión italiano-argentina casi no se comunica. La marca no necesita redefinirse; necesita decirse.</p>
-        </details>
-
-        <h4>Prioridades</h4>
-        <details>
-          <summary>1. Categorías incorrectas en el perfil de Google</summary>
-          <p><strong>Problema —</strong> El perfil está clasificado con categorías que no corresponden al negocio, lo que diluye su relevancia en las búsquedas locales que importan.</p>
-          <p><strong>Evidencia —</strong> Además de restaurante italiano y argentino, figura como "servicio de envíos" y "diner". Aparte, el negocio se lista con dos direcciones válidas de un mismo edificio en esquina (44th Drive y 11th St) según la plataforma.</p>
-          <p><strong>Etapa —</strong> Conocimiento</p>
-          <p><strong>Propuesta —</strong> Depurar las categorías dejando sólo las correctas (restaurante italiano, argentino, familiar). Como acción menor, unificar una única dirección en todas las plataformas.</p>
-          <p><strong>Métrica —</strong> Búsquedas mensuales que muestran el perfil y posición en el ranking local para "italian restaurant Long Island City".</p>
-        </details>
-        <details>
-          <summary>2. El diferencial y las promociones se comunican de forma puntual</summary>
-          <p><strong>Problema —</strong> El elemento más distintivo del negocio no se comunica, y sus promociones se anuncian una sola vez y desaparecen: quien evalúa dónde comer no encuentra motivos para elegirlo por encima de la competencia.</p>
-          <p><strong>Evidencia —</strong> Ningún competidor relevado ofrece cocina italiana y argentina, pero la mayoría de los canales presentan a Go Nonna simplemente como "italiano". El happy hour se publicó como una imagen suelta en Instagram y Facebook, sin recurrencia, y no figura en el sitio ni en Google — mientras mercato LIC sí lo comunica de forma sostenida y aparece mencionado en sus reseñas.</p>
-          <p><strong>Etapa —</strong> Consideración</p>
-          <p><strong>Propuesta —</strong> Articular la propuesta italiano-argentina en la biografía de Instagram, la home del sitio y la descripción de Google. Convertir el happy hour en comunicación recurrente: publicación fija semanal, destacado permanente en Instagram, mención en el sitio y publicación de novedad en Google Business Profile.</p>
-          <p><strong>Métrica —</strong> Clics al sitio y solicitudes de indicaciones desde Google Business Profile; consumo en la franja de happy hour antes y después.</p>
-        </details>
-        <details>
-          <summary>3. Volumen de contenido social muy por debajo del potencial</summary>
-          <p><strong>Problema —</strong> Con menos de cien publicaciones acumuladas, las redes no generan descubrimiento de clientes nuevos, pese a que el local produce material espontáneo todos los días.</p>
-          <p><strong>Evidencia —</strong> ~75 publicaciones y 1.416 seguidores desde 2019, con formato dominante de foto producida y sin video corto. Los clientes etiquetan por cuenta propia sin que el local reutilice ese contenido.</p>
-          <p><strong>Etapa —</strong> Conocimiento</p>
-          <p><strong>Propuesta —</strong> Esquema de contenido de bajo esfuerzo: republicar en historias cada mención o etiqueta de clientes; dos videos cortos semanales sin edición profesional (pasta fresca, plato del día, cocina en movimiento); usar Facebook como espejo automático en vez de gestionarlo aparte.</p>
-          <p><strong>Métrica —</strong> Alcance de cuentas no seguidoras y cantidad de menciones o etiquetas de clientes por mes.</p>
-        </details>
-
-        <h4>Medición y siguientes pasos</h4>
-        <p>Antes de implementar habría que fijar una línea de base: reseñas totales y ritmo de reseñas nuevas, visualizaciones y clics del perfil de Google, alcance de cuentas no seguidoras en Instagram, y reservas y pedidos online mensuales. Plazo razonable de evaluación: 90 días.</p>
-        <p>Quedaron identificadas y deliberadamente no priorizadas: actualizar las fotos del sitio (son de 2019), responder también las reseñas positivas, anticipar en el contenido los tiempos de espera en horarios pico, y evaluar una captación simple de correos en el local.</p>
-      </div>
-
-      <div class="case-study" id="justina-shoes">
-        <span class="tag">Auditoría + benchmark competitivo · Calzado / E-commerce</span>
-        <h3>Justina Shoes</h3>
-        <p class="subtitle">Fabricante de calzado de mujer en cuero · Ramos Mejía, Buenos Aires · Venta mayorista y online a todo el país</p>
-
-        <div class="stats-row">
-          <div class="stat"><div class="num">123K</div><div class="label">Seguidores entre sus dos cuentas de Instagram</div></div>
-          <div class="stat"><div class="num">0</div><div class="label">Reseñas visibles en todo el sitio</div></div>
-          <div class="stat"><div class="num">1 de 4</div><div class="label">Única marca del benchmark sin envío gratis, y la de precio más alto</div></div>
-        </div>
-
-        <h4>Resumen ejecutivo</h4>
-        <p>Justina Shoes vende poco online pese a tener lo que a la mayoría de las marcas le falta: fábrica propia, producto de cuero, más de 123.000 seguidores, cuenta verificada, equipo de marketing y pauta activa. El negocio lo atribuía a la economía y a la competencia de calzado sintético barato. Ese contexto es real, pero afecta a todo el rubro por igual y no habilita ninguna acción, así que el análisis se concentró en lo que sí depende de la marca.</p>
-        <p>El problema no es de alcance sino de consideración y conversión. Todo lo que justifica el precio ya está escrito, pero aparece debajo del botón de compra; la marca afirma calidad sin mostrar ninguna prueba, ni una sola reseña; y la historia de fábrica, su activo más difícil de copiar, no aparece en ningún lado. Propuse tres prioridades ejecutables sin presupuesto adicional de medios, una reasignación de la pauta existente y un benchmark contra tres competidores del rubro.</p>
-
-        <div class="role-note">
-          <strong>Contexto y alcance:</strong> Justina Shoes es una marca familiar en la que participé en producción de contenido, campañas de fotos y análisis de estrategia. Esta auditoría la hice sobre información pública — sitio en móvil y escritorio, fichas de producto, Instagram, TikTok y Pinterest — más contexto aportado por el negocio. No tuve acceso a Analytics, a las cuentas publicitarias ni a datos de ventas: ningún dato fue estimado, y lo que es hipótesis está señalado como tal.
-        </div>
-
-        <h4>Por qué la confianza pesa tanto en este rubro</h4>
-        <p>El calzado de cuero es una compra cara, poco frecuente y que no se puede probar antes. Con ingresos ajustados, la reacción más común no es pasarse a algo más barato sino postergar el reemplazo: el competidor real es la decisión de no comprar todavía. Por eso las señales de confian
